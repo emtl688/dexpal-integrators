@@ -597,15 +597,18 @@ const DexPalPartnershipDashboard = () => {
               
               {/* Navigation inspired by the image */}
               <nav className="hidden lg:flex items-center space-x-8">
-                <a href="#" className="text-white/90 hover:text-white font-medium transition-colors">Overview</a>
-                <a href="#" className="text-white/90 hover:text-white font-medium transition-colors">Features</a>
-                <a href="#" className="text-white/90 hover:text-white font-medium transition-colors">Business Model</a>
-                <a href="#" className="text-white/90 hover:text-white font-medium transition-colors">Partners</a>
-                <a href="#" className="text-white/90 hover:text-white font-medium transition-colors">Tokenomics</a>
+                <button onClick={() => setActiveTab('overview')} className="text-white/90 hover:text-white font-medium transition-colors">Overview</button>
+                <button onClick={() => setActiveTab('benefits')} className="text-white/90 hover:text-white font-medium transition-colors">Benefits</button>
+                <button onClick={() => setActiveTab('pricing')} className="text-white/90 hover:text-white font-medium transition-colors">Pricing</button>
+                <button onClick={() => setActiveTab('partners')} className="text-white/90 hover:text-white font-medium transition-colors">Partners</button>
+                <button onClick={() => setActiveTab('contact')} className="text-white/90 hover:text-white font-medium transition-colors">Contact</button>
               </nav>
             </div>
             
-            <button className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-medium px-6 py-2 rounded-lg transition-all duration-200 border border-white/20">
+            <button 
+              onClick={() => setActiveTab('contact')}
+              className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-medium px-6 py-2 rounded-lg transition-all duration-200 border border-white/20"
+            >
               Apply Now
             </button>
           </div>
@@ -688,30 +691,30 @@ const DexPalPartnershipDashboard = () => {
             <div>
               <h3 className="text-sm font-semibold text-white mb-4">Product</h3>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="text-zinc-400 hover:text-purple-400 transition-colors">Features</a></li>
-                <li><a href="#" className="text-zinc-400 hover:text-purple-400 transition-colors">Pricing</a></li>
-                <li><a href="#" className="text-zinc-400 hover:text-purple-400 transition-colors">API</a></li>
-                <li><a href="#" className="text-zinc-400 hover:text-purple-400 transition-colors">Documentation</a></li>
+                <li><button onClick={() => setActiveTab('benefits')} className="text-zinc-400 hover:text-purple-400 transition-colors">Benefits</button></li>
+                <li><button onClick={() => setActiveTab('pricing')} className="text-zinc-400 hover:text-purple-400 transition-colors">Pricing</button></li>
+                <li><button onClick={() => setActiveTab('requirements')} className="text-zinc-400 hover:text-purple-400 transition-colors">API</button></li>
+                <li><button onClick={() => setActiveTab('support')} className="text-zinc-400 hover:text-purple-400 transition-colors">Documentation</button></li>
               </ul>
             </div>
             
             <div>
               <h3 className="text-sm font-semibold text-white mb-4">Partners</h3>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="text-zinc-400 hover:text-purple-400 transition-colors">Become a Partner</a></li>
-                <li><a href="#" className="text-zinc-400 hover:text-purple-400 transition-colors">Partner Portal</a></li>
-                <li><a href="#" className="text-zinc-400 hover:text-purple-400 transition-colors">Integration Guide</a></li>
-                <li><a href="#" className="text-zinc-400 hover:text-purple-400 transition-colors">Support</a></li>
+                <li><button onClick={() => setActiveTab('contact')} className="text-zinc-400 hover:text-purple-400 transition-colors">Become a Partner</button></li>
+                <li><button onClick={() => setActiveTab('partners')} className="text-zinc-400 hover:text-purple-400 transition-colors">Partner Portal</button></li>
+                <li><button onClick={() => setActiveTab('requirements')} className="text-zinc-400 hover:text-purple-400 transition-colors">Integration Guide</button></li>
+                <li><button onClick={() => setActiveTab('support')} className="text-zinc-400 hover:text-purple-400 transition-colors">Support</button></li>
               </ul>
             </div>
             
             <div>
               <h3 className="text-sm font-semibold text-white mb-4">Company</h3>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="text-zinc-400 hover:text-purple-400 transition-colors">About</a></li>
-                <li><a href="#" className="text-zinc-400 hover:text-purple-400 transition-colors">Blog</a></li>
-                <li><a href="#" className="text-zinc-400 hover:text-purple-400 transition-colors">Careers</a></li>
-                <li><a href="#" className="text-zinc-400 hover:text-purple-400 transition-colors">Contact</a></li>
+                <li><button onClick={() => setActiveTab('mission')} className="text-zinc-400 hover:text-purple-400 transition-colors">About</button></li>
+                <li><button onClick={() => setActiveTab('market')} className="text-zinc-400 hover:text-purple-400 transition-colors">Market</button></li>
+                <li><button onClick={() => setActiveTab('roadmap')} className="text-zinc-400 hover:text-purple-400 transition-colors">Roadmap</button></li>
+                <li><button onClick={() => setActiveTab('contact')} className="text-zinc-400 hover:text-purple-400 transition-colors">Contact</button></li>
               </ul>
             </div>
           </div>
