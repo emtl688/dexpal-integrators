@@ -31,7 +31,7 @@ const DexPalPartnershipDashboard = () => {
       groupName: "Partnership Overview",
       items: [
         { id: 'overview', label: 'Partnership Hub', icon: '📊' },
-        { id: 'mission', label: 'Mission & Vision', icon: '🎯' },
+        { id: 'mission', label: 'DexPal Overview', icon: '🎯' },
         { id: 'market', label: 'Market Opportunity', icon: '📈' },
         { id: 'benefits', label: 'Partner Benefits', icon: '💎' }
       ]
@@ -345,29 +345,23 @@ const DexPalPartnershipDashboard = () => {
 
   const renderMission = () => (
     <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
-      <h2 className="text-2xl font-bold text-white mb-6">Mission & Vision</h2>
-      <div className="bg-gradient-to-r from-purple-900/20 to-purple-800/20 border border-purple-500/20 rounded-xl p-6 mb-6">
-        <h3 className="text-xl font-semibold text-purple-400 mb-3">Our Mission</h3>
-        <p className="text-zinc-200 leading-relaxed">
-          To accelerate DeFi adoption by helping traders transition from centralized to decentralized platforms through rewards, advanced analytics, and seamless user experiences.
+      <h2 className="text-2xl font-bold text-white mb-6">DexPal Overview</h2>
+      <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
+        <div className="aspect-video w-full rounded-lg overflow-hidden">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/ubLtLPuepDM"
+            title="DexPal Overview Video"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="w-full h-full"
+          ></iframe>
+        </div>
+        <p className="text-zinc-400 text-sm mt-4 text-center">
+          Watch our overview video to learn how DexPal is revolutionizing DEX trading
         </p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="text-center bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
-          <div className="text-4xl mb-4">🌉</div>
-          <h4 className="font-semibold text-white mb-2">Bridge the Gap</h4>
-          <p className="text-zinc-400 text-sm">Connect CEX users to DeFi opportunities</p>
-        </div>
-        <div className="text-center bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
-          <div className="text-4xl mb-4">⚡</div>
-          <h4 className="font-semibold text-white mb-2">Simplify DeFi</h4>
-          <p className="text-zinc-400 text-sm">Remove complexity barriers</p>
-        </div>
-        <div className="text-center bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
-          <div className="text-4xl mb-4">🎁</div>
-          <h4 className="font-semibold text-white mb-2">Reward Participation</h4>
-          <p className="text-zinc-400 text-sm">Create sustainable incentive systems</p>
-        </div>
       </div>
     </div>
   );
