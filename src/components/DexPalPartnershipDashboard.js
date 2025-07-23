@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, Area, AreaChart } from 'recharts';
 
 const DexPalPartnershipDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -13,39 +12,17 @@ const DexPalPartnershipDashboard = () => {
     );
   };
 
-  // Market data for charts
-  const marketData = [
-    { year: '2025', revenue: 3, volume: 16, users: 13500, dexs: 30 },
-    { year: '2026', revenue: 15, volume: 88, users: 30000, dexs: 40 },
-    { year: '2027', revenue: 55, volume: 283, users: 100000, dexs: 80 },
-    { year: '2028', revenue: 125, volume: 650, users: 250000, dexs: 120 },
-  ];
 
-  const partnershipGrowth = [
-    { month: 'Aug', partners: 5, volume: 2.1 },
-    { month: 'Sep', partners: 8, volume: 4.2 },
-    { month: 'Oct', partners: 12, volume: 7.8 },
-    { month: 'Nov', partners: 15, volume: 12.4 },
-    { month: 'Dec', partners: 18, volume: 18.9 },
-    { month: 'Jan', partners: 22, volume: 28.5 },
-  ];
 
   // Partnership data
   const confirmedPartners = [
-    { name: 'Gains Network', status: 'Confirmed', network: 'Arbitrum', tier: 'Genesis', volume: '$2.4M' },
-    { name: 'GMX', status: 'Confirmed', network: 'Arbitrum', tier: 'Genesis', volume: '$8.7M' },
-    { name: 'Helix', status: 'Confirmed', network: 'Injective', tier: 'Genesis', volume: '$1.2M' },
-    { name: 'Pear Protocol', status: 'Confirmed', network: 'Ethereum', tier: 'Genesis', volume: '$3.1M' },
-    { name: 'Paradex', status: 'Confirmed', network: 'Starknet', tier: 'Genesis', volume: '$5.8M' },
-    { name: 'SynFutures', status: 'Confirmed', network: 'Polygon', tier: 'Early', volume: '$4.2M' },
-    { name: 'Vertex', status: 'Launching', network: 'Arbitrum', tier: 'Early', volume: 'TBD' }
-  ];
-
-  const pricingTiers = [
-    { tier: 'Genesis (First 5)', discount: '75%', slots: '3/5', cost: '$2,500', integration: '$2,500', prizePool: '$0' },
-    { tier: 'Early (Next 10)', discount: '50%', slots: '2/10', cost: '$5,000', integration: '$2,500', prizePool: 'Up to $2,500' },
-    { tier: 'Standard (Final 5)', discount: '25%', slots: '5/5', cost: '$7,500', integration: '$2,500', prizePool: 'Up to $5,000' },
-    { tier: 'Regular (After 20)', discount: '0%', slots: '∞', cost: 'Contact Us', integration: '$2,500', prizePool: 'Up to $7,500' }
+    { name: 'Gains Network', status: 'Confirmed', network: 'Arbitrum', tier: 'Genesis' },
+    { name: 'GMX', status: 'Confirmed', network: 'Arbitrum', tier: 'Genesis' },
+    { name: 'Helix', status: 'Confirmed', network: 'Injective', tier: 'Genesis' },
+    { name: 'Pear Protocol', status: 'Confirmed', network: 'Ethereum', tier: 'Genesis' },
+    { name: 'Paradex', status: 'Confirmed', network: 'Starknet', tier: 'Genesis' },
+    { name: 'SynFutures', status: 'Confirmed', network: 'Polygon', tier: 'Early' },
+    { name: 'Vertex', status: 'Waitlisted', network: 'Arbitrum', tier: 'Early' }
   ];
 
   // Sidebar structure matching the inspiration
@@ -91,7 +68,7 @@ const DexPalPartnershipDashboard = () => {
           </div>
         </div>
         <div>
-          <h2 className="text-lg font-semibold text-white mb-2">DexPal Partnership Hub & Knowledge Center</h2>
+          <h2 className="text-lg font-semibold text-white mb-2">DEX Onboarding Hub & Knowledge Center</h2>
           <p className="text-zinc-400 text-sm leading-relaxed">
             This dashboard provides comprehensive information about DexPal's partnership program, integration requirements, and growth opportunities. Explore our ecosystem and discover how to join the future of decentralized trading.
           </p>
@@ -105,29 +82,42 @@ const DexPalPartnershipDashboard = () => {
     <div className="space-y-8">
       <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-white mb-4">DexPal Partnership Hub</h1>
+          <h1 className="text-3xl font-bold text-white mb-4">DEX Onboarding Hub</h1>
           <p className="text-zinc-300 text-lg leading-relaxed">
             Join the revolution in decentralized trading. DexPal is building the comprehensive infrastructure that bridges traditional and decentralized finance through advanced analytics, gamified rewards, and seamless user experiences.
           </p>
         </div>
 
-        {/* Key Metrics */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6 text-center">
-            <div className="text-2xl font-bold text-purple-400 mb-2">$283B</div>
-            <div className="text-sm text-zinc-400">2027 Volume Projection</div>
+        {/* What is DexPal Section */}
+        <div className="bg-gradient-to-r from-purple-900/20 to-purple-800/20 border border-purple-500/20 rounded-xl p-6 mb-8">
+          <h3 className="text-xl font-semibold text-purple-400 mb-3">What is DexPal?</h3>
+          <p className="text-zinc-200 leading-relaxed">
+            DexPal is the all-in-one data dashboard and rewards hub for trading perpetual futures on DEXs. We simplify onboarding and UX to make DeFi derivatives accessible to retail and CEX users—while helping DEXs grow and retain users thanks to our unique rewards program.
+          </p>
+        </div>
+
+        {/* Main Benefits */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+          <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6">
+            <div className="w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center mb-4">
+              <span className="text-2xl">👥</span>
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-3">Attract New Users</h3>
+            <p className="text-zinc-400 text-sm">Bring new traders to your DEX from CEXs, Forex, and traditional markets</p>
           </div>
-          <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6 text-center">
-            <div className="text-2xl font-bold text-purple-400 mb-2">100K+</div>
-            <div className="text-sm text-zinc-400">Active Users Target</div>
+          <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6">
+            <div className="w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center mb-4">
+              <span className="text-2xl">💰</span>
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-3">Additional Rewards</h3>
+            <p className="text-zinc-400 text-sm">Traders earn extra rewards for using your DEX through our program</p>
           </div>
-          <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6 text-center">
-            <div className="text-2xl font-bold text-purple-400 mb-2">80</div>
-            <div className="text-sm text-zinc-400">Integrated DEXs</div>
-          </div>
-          <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6 text-center">
-            <div className="text-2xl font-bold text-purple-400 mb-2">7</div>
-            <div className="text-sm text-zinc-400">Confirmed Partners</div>
+          <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6">
+            <div className="w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center mb-4">
+              <span className="text-2xl">🚀</span>
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-3">Greater Visibility</h3>
+            <p className="text-zinc-400 text-sm">Custom profile of your DEX and updates to our user base</p>
           </div>
         </div>
 
@@ -140,73 +130,7 @@ const DexPalPartnershipDashboard = () => {
         </div>
       </div>
 
-      {/* Market Opportunity Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-white mb-4">Revenue Projection</h3>
-          <div className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={marketData}>
-                <defs>
-                  <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#8B5CF6" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#8B5CF6" stopOpacity={0}/>
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <XAxis dataKey="year" stroke="#9CA3AF" />
-                <YAxis stroke="#9CA3AF" />
-                <Tooltip 
-                  contentStyle={{ 
-                    backgroundColor: '#18181B', 
-                    border: '1px solid #374151',
-                    borderRadius: '8px',
-                    color: '#fff'
-                  }} 
-                />
-                <Area 
-                  type="monotone" 
-                  dataKey="revenue" 
-                  stroke="#8B5CF6" 
-                  fillOpacity={1} 
-                  fill="url(#colorRevenue)" 
-                  strokeWidth={2}
-                />
-              </AreaChart>
-            </ResponsiveContainer>
-          </div>
-          <p className="text-zinc-400 text-sm mt-2">Revenue in millions USD</p>
-        </div>
 
-        <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-white mb-4">Partnership Growth</h3>
-          <div className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={partnershipGrowth}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <XAxis dataKey="month" stroke="#9CA3AF" />
-                <YAxis stroke="#9CA3AF" />
-                <Tooltip 
-                  contentStyle={{ 
-                    backgroundColor: '#18181B', 
-                    border: '1px solid #374151',
-                    borderRadius: '8px',
-                    color: '#fff'
-                  }} 
-                />
-                <Line 
-                  type="monotone" 
-                  dataKey="partners" 
-                  stroke="#8B5CF6" 
-                  strokeWidth={3}
-                  dot={{ fill: '#8B5CF6', strokeWidth: 2, r: 4 }}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-          <p className="text-zinc-400 text-sm mt-2">Number of partner DEXs</p>
-        </div>
-      </div>
     </div>
   );
 
@@ -217,34 +141,8 @@ const DexPalPartnershipDashboard = () => {
       
       <div className="mb-8">
         <p className="text-zinc-300 leading-relaxed mb-6">
-          The crypto derivatives market presents a massive opportunity for disruption and growth. DexPal is positioned to capture significant market share through strategic partnerships and innovative technology.
+          The number of users in traditional finance markets (CEXs, Forex, Stock traders) represents a massive opportunity for DEX growth. DexPal helps DEXs attract these new users by simplifying onboarding and providing familiar trading experiences with DeFi benefits.
         </p>
-      </div>
-
-      {/* Market Stats Table */}
-      <div className="overflow-hidden rounded-xl border border-zinc-700/50 mb-8">
-        <table className="w-full">
-          <thead>
-            <tr className="bg-zinc-800/60 border-b border-zinc-700/50">
-              <th className="text-left py-4 px-6 text-white font-semibold">Time Period</th>
-              <th className="text-left py-4 px-6 text-white font-semibold">Revenue Projection</th>
-              <th className="text-left py-4 px-6 text-white font-semibold">Trading Volume</th>
-              <th className="text-left py-4 px-6 text-white font-semibold">Active Users</th>
-              <th className="text-left py-4 px-6 text-white font-semibold">Integrated DEXs</th>
-            </tr>
-          </thead>
-          <tbody className="bg-zinc-900/40">
-            {marketData.map((data, index) => (
-              <tr key={index} className="border-b border-zinc-700/30 hover:bg-zinc-800/30 transition-colors">
-                <td className="py-4 px-6 text-zinc-200 font-medium">{data.year}</td>
-                <td className="py-4 px-6 text-purple-400 font-semibold">${data.revenue} Million</td>
-                <td className="py-4 px-6 text-zinc-300">${data.volume} Billion</td>
-                <td className="py-4 px-6 text-zinc-300">{data.users.toLocaleString()}+</td>
-                <td className="py-4 px-6 text-zinc-300">{data.dexs}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
 
       {/* Core Value Proposition */}
@@ -269,8 +167,8 @@ const DexPalPartnershipDashboard = () => {
           <div className="w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center mb-4">
             <span className="text-2xl">🎯</span>
           </div>
-          <h3 className="text-lg font-semibold text-white mb-3">Absent Reward Structures</h3>
-          <p className="text-zinc-400 text-sm">Existing DEXs capture value from users without sufficient value return</p>
+          <h3 className="text-lg font-semibold text-white mb-3">Fragmented Rewards</h3>
+          <p className="text-zinc-400 text-sm">There is not a global rewards program and each DEX has its own referral/reward system making it fragmented and causes user friction and onboarding issues</p>
         </div>
       </div>
     </div>
@@ -385,10 +283,6 @@ const DexPalPartnershipDashboard = () => {
                 <span className="text-zinc-400">Tier:</span>
                 <span className="text-purple-400 font-medium">{partner.tier}</span>
               </div>
-              <div className="flex justify-between text-sm">
-                <span className="text-zinc-400">Volume:</span>
-                <span className="text-zinc-200 font-medium">{partner.volume}</span>
-              </div>
             </div>
             
             <div className="mt-4 w-full bg-zinc-700 rounded-full h-2">
@@ -408,51 +302,25 @@ const DexPalPartnershipDashboard = () => {
     <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
       <h2 className="text-2xl font-bold text-white mb-6">Pricing & Incentives</h2>
       
-      <div className="mb-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="mb-8">
         <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
-          <h3 className="text-xl font-semibold text-purple-400 mb-4">Early Partner Advantage</h3>
-          <div className="text-3xl font-bold text-white mb-2">Up to 75% OFF</div>
-          <p className="text-zinc-400">Genesis partners get maximum savings and exclusive benefits</p>
-        </div>
-        <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
-          <h3 className="text-xl font-semibold text-emerald-400 mb-4">Standard Integration</h3>
-          <div className="text-3xl font-bold text-white mb-2">Contact Us</div>
-          <p className="text-zinc-400">Custom pricing for standard partnerships</p>
+          <h3 className="text-xl font-semibold text-purple-400 mb-4">Genesis Program</h3>
+          <p className="text-zinc-300 leading-relaxed mb-4">
+            DEXs who are part of the genesis program will pay between $2,500 - $5,000 one time fee depending on the complexity of integration with their APIs. After the genesis program we intend to increase the Integration fees to a minimum of $10k.
+          </p>
+          <p className="text-zinc-400 text-sm">
+            DexPal will limit the number of DEXs that participate in the Genesis program to a maximum of 15.
+          </p>
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-xl border border-zinc-700/50">
-        <table className="w-full">
-          <thead>
-            <tr className="bg-zinc-800/60 border-b border-zinc-700/50">
-              <th className="text-left py-4 px-6 text-white font-semibold">Partnership Tier</th>
-              <th className="text-left py-4 px-6 text-white font-semibold">Discount</th>
-              <th className="text-left py-4 px-6 text-white font-semibold">Available Slots</th>
-              <th className="text-left py-4 px-6 text-white font-semibold">Total Cost</th>
-              <th className="text-left py-4 px-6 text-white font-semibold">Prize Pool</th>
-            </tr>
-          </thead>
-          <tbody className="bg-zinc-900/40">
-            {pricingTiers.map((tier, index) => (
-              <tr key={index} className="border-b border-zinc-700/30 hover:bg-zinc-800/30 transition-colors">
-                <td className="py-4 px-6 text-zinc-200 font-medium">{tier.tier}</td>
-                <td className="py-4 px-6">
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${
-                    tier.discount === '75%' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' :
-                    tier.discount === '50%' ? 'bg-blue-500/20 text-blue-400 border-blue-500/30' :
-                    tier.discount === '25%' ? 'bg-amber-500/20 text-amber-400 border-amber-500/30' :
-                    'bg-red-500/20 text-red-400 border-red-500/30'
-                  }`}>
-                    {tier.discount}
-                  </span>
-                </td>
-                <td className="py-4 px-6 text-zinc-300">{tier.slots}</td>
-                <td className="py-4 px-6 font-semibold text-purple-400 text-lg">{tier.cost}</td>
-                <td className="py-4 px-6 text-zinc-400">{tier.prizePool}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="mb-8">
+        <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
+          <h3 className="text-xl font-semibold text-emerald-400 mb-4">DEX Giveaway (Optional)</h3>
+          <p className="text-zinc-300 leading-relaxed">
+            We encourage partner DEXs to sponsor a user giveaway in the range of $2,000–$10,000 to DexPal users who trade on your DEX. These funds will be exclusively used to reward DexPal users who trade on your DEX. The details of the giveaway and rules will be determined in the future.
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -465,6 +333,7 @@ const DexPalPartnershipDashboard = () => {
       <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
         <h3 className="text-lg font-semibold text-purple-400 mb-4">Core Requirements</h3>
         <ul className="space-y-3 text-zinc-300">
+          <li>• Integration fee cost</li>
           <li>• Affiliate code system with 20%+ fee share</li>
           <li>• REST API access for trading data</li>
           <li>• Co-marketing agreement</li>
