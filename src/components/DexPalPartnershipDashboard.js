@@ -480,7 +480,7 @@ const DexPalPartnershipDashboard = () => {
               </div>
               <div>
                 <div className="font-medium text-white">Business Development</div>
-                <div className="text-purple-400 text-sm font-mono">partnerships@dexpal.com</div>
+                <div className="text-purple-400 text-sm font-mono">hamed@dexpal.ai</div>
               </div>
             </div>
             <div className="flex items-center space-x-3">
@@ -489,7 +489,7 @@ const DexPalPartnershipDashboard = () => {
               </div>
               <div>
                 <div className="font-medium text-white">Technical Integration</div>
-                <div className="text-purple-400 text-sm font-mono">tech@dexpal.com</div>
+                <div className="text-purple-400 text-sm font-mono">hamed@dexpal.ai</div>
               </div>
             </div>
           </div>
@@ -497,7 +497,7 @@ const DexPalPartnershipDashboard = () => {
           <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
             <h4 className="font-semibold text-white mb-3">Next Steps</h4>
             <ol className="space-y-2 text-zinc-300 text-sm">
-              <li>1. Email partnerships@dexpal.com</li>
+              <li>1. Email hamed@dexpal.ai</li>
               <li>2. Schedule intro call</li>
               <li>3. Review technical requirements</li>
               <li>4. Sign partnership agreement</li>
