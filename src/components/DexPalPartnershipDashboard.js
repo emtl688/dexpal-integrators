@@ -168,7 +168,7 @@ const DexPalPartnershipDashboard = () => {
             <span className="text-2xl">🎯</span>
           </div>
           <h3 className="text-lg font-semibold text-white mb-3">Fragmented Rewards</h3>
-          <p className="text-zinc-400 text-sm">There is not a global rewards program and each DEX has its own referral/reward system making it fragmented and causes user friction and onboarding issues</p>
+          <p className="text-zinc-400 text-sm">Referral and rewards systems are fragmented across DEXs, creating user friction and onboarding challenges</p>
         </div>
       </div>
     </div>
