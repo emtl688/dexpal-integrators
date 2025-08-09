@@ -877,7 +877,7 @@ const DexPalPartnershipDashboard = () => {
                 <img
                   src="/dexpal-full-white-logo.png"
                   alt="DexPal Logo"
-                  className="h-12 w-auto mb-1"
+                  className="h-11 w-auto mb-1"
                 />
               </div>
 
@@ -998,7 +998,7 @@ const DexPalPartnershipDashboard = () => {
                 <img
                   src="/dexpal-full-white-logo.png"
                   alt="DexPal Logo"
-                  className="h-12 w-auto"
+                  className="h-11 w-auto"
                 />
               </div>
               <p className="text-zinc-400 text-sm leading-relaxed">
