@@ -1,174 +1,44 @@
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 const DexPalPartnershipDashboard = () => {
-  const location = useLocation();
-  const [expandedGroups, setExpandedGroups] = useState([
-    "Partnership Overview",
-  ]);
+  const [activeTab, setActiveTab] = useState("overview");
 
-  // Map routes to tab IDs for content rendering
-  const routeToTabMap = {
-    "/overview": "overview",
-    "/dexpal-overview": "mission",
-    "/market-opportunity": "market",
-    "/partner-benefits": "benefits",
-    "/integration-requirements": "requirements",
-    "/pricing-and-incentives": "pricing",
-    "/partner-ecosystem": "partners",
-    "/product-roadmap": "roadmap",
-    "/onboarding-process": "onboarding",
-    "/technical-support": "support",
-    "/co-marketing": "marketing",
-    "/contact-and-apply": "contact",
-  };
-
-  // Get current active tab based on route
-  const activeTab = routeToTabMap[location.pathname] || "overview";
-
-  const toggleGroup = (groupName) => {
-    setExpandedGroups((prev) =>
-      prev.includes(groupName)
-        ? prev.filter((name) => name !== groupName)
-        : [...prev, groupName]
-    );
-  };
-
-  // Partnership data
-  const confirmedPartners = [
+  const sideBarNavLinks = [
     {
-      name: "Gains Network",
-      status: "Confirmed",
-      network: "Arbitrum",
-      tier: "Genesis",
-    },
-    { name: "GMX", status: "Confirmed", network: "Arbitrum", tier: "Genesis" },
-    {
-      name: "Helix",
-      status: "Confirmed",
-      network: "Injective",
-      tier: "Genesis",
+      id: "overview",
+      label: "Overview",
+      icon: "🎯",
     },
     {
-      name: "Pear Protocol",
-      status: "Confirmed",
-      network: "Ethereum",
-      tier: "Genesis",
+      id: "benefits",
+      label: "Partner Benefits",
+      icon: "🤝",
     },
     {
-      name: "Paradex",
-      status: "Confirmed",
-      network: "Starknet",
-      tier: "Genesis",
+      id: "rewards",
+      label: "Universal Rewards Program",
+      icon: "💰",
     },
     {
-      name: "SynFutures",
-      status: "Confirmed",
-      network: "Polygon",
-      tier: "Early",
+      id: "requirements",
+      label: "Integration Requirements",
+      icon: "⚙️",
     },
     {
-      name: "Vertex",
-      status: "Waitlisted",
-      network: "Arbitrum",
-      tier: "Early",
-    },
-  ];
-
-  // Updated sidebar structure with routes
-  const sidebarStructure = [
-    {
-      groupName: "Partnership Overview",
-      items: [
-        {
-          id: "overview",
-          label: "Partnership Hub",
-          icon: "📊",
-          route: "/overview",
-        },
-        {
-          id: "mission",
-          label: "DexPal Overview",
-          icon: "🎯",
-          route: "/dexpal-overview",
-        },
-        {
-          id: "market",
-          label: "Market Opportunity",
-          icon: "📈",
-          route: "/market-opportunity",
-        },
-        {
-          id: "benefits",
-          label: "Partner Benefits",
-          icon: "💎",
-          route: "/partner-benefits",
-        },
-      ],
+      id: "roadmap",
+      label: "Product Roadmap",
+      icon: "🗺️",
     },
     {
-      groupName: "Partnership Details",
-      items: [
-        {
-          id: "requirements",
-          label: "Integration Requirements",
-          icon: "⚙️",
-          route: "/integration-requirements",
-        },
-        {
-          id: "pricing",
-          label: "Pricing & Incentives",
-          icon: "💰",
-          route: "/pricing-and-incentives",
-        },
-        {
-          id: "partners",
-          label: "Partner Ecosystem",
-          icon: "🤝",
-          route: "/partner-ecosystem",
-        },
-        {
-          id: "roadmap",
-          label: "Product Roadmap",
-          icon: "🗺️",
-          route: "/product-roadmap",
-        },
-      ],
-    },
-    {
-      groupName: "Resources & Knowledge",
-      items: [
-        {
-          id: "onboarding",
-          label: "Onboarding Process",
-          icon: "🚀",
-          route: "/onboarding-process",
-        },
-        {
-          id: "support",
-          label: "Technical Support",
-          icon: "🛠️",
-          route: "/technical-support",
-        },
-        {
-          id: "marketing",
-          label: "Co-Marketing",
-          icon: "📢",
-          route: "/co-marketing",
-        },
-        {
-          id: "contact",
-          label: "Contact & Apply",
-          icon: "📞",
-          route: "/contact-and-apply",
-        },
-      ],
+      id: "contact",
+      label: "Contact & Apply",
+      icon: "📧",
     },
   ];
 
   // Header banner inspired by the design
   const DocumentationBanner = () => (
-    <div className="bg-zinc-900/50 border-l-4 border-purple-500 rounded-lg p-6 mb-8 backdrop-blur-sm">
+    <div className="bg-zinc-900/50 border-l-4 border-purple-500 rounded-lg p-6 max-md:p-4 mb-8 backdrop-blur-sm">
       <div className="flex items-start space-x-4">
         <div className="flex-shrink-0">
           <div className="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center">
@@ -186,14 +56,12 @@ const DexPalPartnershipDashboard = () => {
           </div>
         </div>
         <div>
-          <h2 className="text-lg font-semibold text-white mb-2">
-            DEX Onboarding Hub & Knowledge Center
-          </h2>
+          <h2 className="text-lg font-semibold text-white mb-2">Welcome!</h2>
           <p className="text-zinc-400 text-sm leading-relaxed">
-            This dashboard provides comprehensive information about DexPal's
-            partnership program, integration requirements, and growth
-            opportunities. Explore our ecosystem and discover how to join the
-            future of decentralized trading.
+            This Dataroom is designed for DEX partners integrating with DexPal.
+            Here, you'll find everything you need to know about DexPal, along
+            with the steps required to integrate your DEX into our data terminal
+            and universal rewards program.
           </p>
         </div>
       </div>
@@ -203,47 +71,39 @@ const DexPalPartnershipDashboard = () => {
   // Overview content with market data
   const renderOverview = () => (
     <div className="space-y-8">
-      <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
-        <div className="mb-6">
-          <h1 className="text-3xl font-bold text-white mb-4">
-            DEX Onboarding Hub
-          </h1>
-          <p className="text-zinc-300 text-lg leading-relaxed">
-            Join the revolution in decentralized trading. DexPal is building the
-            comprehensive infrastructure that bridges traditional and
-            decentralized finance through advanced analytics, gamified rewards,
-            and seamless user experiences.
-          </p>
-        </div>
-
+      <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8 max-md:p-4">
         {/* What is DexPal Section */}
-        <div className="bg-gradient-to-r from-purple-900/20 to-purple-800/20 border border-purple-500/20 rounded-xl p-6 mb-8">
+        <div className="bg-gradient-to-r from-purple-900/20 to-purple-800/20 border border-purple-500/20 rounded-xl p-6 max-md:p-4 mb-8">
           <h3 className="text-xl font-semibold text-purple-400 mb-3">
             What is DexPal?
           </h3>
-          <p className="text-zinc-200 leading-relaxed">
+          <p className="text-zinc-200 leading-relaxed mb-2">
             DexPal is the all-in-one data dashboard and rewards hub for trading
-            perpetual futures on DEXs. We simplify onboarding and UX to make
-            DeFi derivatives accessible to retail and CEX users—while helping
-            DEXs grow and retain users thanks to our unique rewards program.
+            perpetual futures on decentralized exchanges (DEXs).
+          </p>
+          <p className="text-zinc-200 leading-relaxed">
+            We streamline onboarding and enhance the user experience, making
+            DeFi derivatives more accessible to retail traders and CEX
+            users—while empowering DEXs to grow and retain their communities
+            through our universal rewards program.
           </p>
         </div>
 
+        <h1 className="text-3xl font-bold text-white mb-4">Benefits</h1>
+
         {/* Main Benefits */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-          <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6">
+          <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6 max-md:p-4">
             <div className="w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center mb-4">
               <span className="text-2xl">👥</span>
             </div>
-            <h3 className="text-lg font-semibold text-white mb-3">
-              Attract New Users
-            </h3>
+            <h3 className="text-lg font-semibold text-white mb-3">Growth</h3>
             <p className="text-zinc-400 text-sm">
-              Bring new traders to your DEX from CEXs, Forex, and traditional
-              markets
+              Attract new traders and increase both trading volume and frequency
+              on your DEX.
             </p>
           </div>
-          <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6">
+          <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6 max-md:p-4">
             <div className="w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center mb-4">
               <span className="text-2xl">💰</span>
             </div>
@@ -251,89 +111,34 @@ const DexPalPartnershipDashboard = () => {
               Additional Rewards
             </h3>
             <p className="text-zinc-400 text-sm">
-              Traders earn extra rewards for using your DEX through our program
+              Your users earn extra incentives for trading on your platform
+              through our rewards program.
             </p>
           </div>
-          <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6">
+          <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6 max-md:p-4">
             <div className="w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center mb-4">
-              <span className="text-2xl">🚀</span>
+              <span className="text-2xl">👀</span>
             </div>
             <h3 className="text-lg font-semibold text-white mb-3">
               Greater Visibility
             </h3>
             <p className="text-zinc-400 text-sm">
-              Custom profile of your DEX and updates to our user base
+              Promote your DEX with a customizable, shareable profile that keeps
+              the public updated on your features and offerings.
             </p>
           </div>
         </div>
 
         {/* Mission Statement */}
-        <div className="bg-gradient-to-r from-purple-900/20 to-purple-800/20 border border-purple-500/20 rounded-xl p-6">
+        <div className="bg-gradient-to-r from-purple-900/20 to-purple-800/20 border border-purple-500/20 rounded-xl p-6 max-md:p-4">
           <h3 className="text-xl font-semibold text-purple-400 mb-3">
             Mission Statement
           </h3>
           <p className="text-zinc-200 leading-relaxed">
-            DexPal's mission is to help onboard and guide a new generation of
-            traders to disrupt the multi-trillion dollar crypto derivatives
-            market towards a more decentralized future.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-
-  // Market Opportunity
-  const renderMarket = () => (
-    <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
-      <h2 className="text-2xl font-bold text-white mb-6">Market Opportunity</h2>
-
-      <div className="mb-8">
-        <p className="text-zinc-300 leading-relaxed mb-6">
-          The number of users in traditional finance markets (CEXs, Forex, Stock
-          traders) represents a massive opportunity for DEX growth. DexPal helps
-          DEXs attract these new users by simplifying onboarding and providing
-          familiar trading experiences with DeFi benefits.
-        </p>
-      </div>
-
-      {/* Core Value Proposition */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
-          <div className="w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center mb-4">
-            <span className="text-2xl">📊</span>
-          </div>
-          <h3 className="text-lg font-semibold text-white mb-3">
-            Data Fragmentation
-          </h3>
-          <p className="text-zinc-400 text-sm">
-            DEX traders must navigate multiple interfaces to access
-            comprehensive market data
-          </p>
-        </div>
-
-        <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
-          <div className="w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center mb-4">
-            <span className="text-2xl">📈</span>
-          </div>
-          <h3 className="text-lg font-semibold text-white mb-3">
-            Limited Analytics
-          </h3>
-          <p className="text-zinc-400 text-sm">
-            Current platforms offer insufficient visualization and analysis
-            tools
-          </p>
-        </div>
-
-        <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
-          <div className="w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center mb-4">
-            <span className="text-2xl">🎯</span>
-          </div>
-          <h3 className="text-lg font-semibold text-white mb-3">
-            Fragmented Rewards
-          </h3>
-          <p className="text-zinc-400 text-sm">
-            Referral and rewards systems are fragmented across DEXs, creating
-            user friction and onboarding challenges
+            DexPal's mission is to address the fragmentation and user experience
+            challenges facing traders and DEXs. By simplifying the process, we
+            aim to onboard the next generation of traders towards a more
+            decentralized future.
           </p>
         </div>
       </div>
@@ -342,69 +147,99 @@ const DexPalPartnershipDashboard = () => {
 
   // Enhanced Partner Benefits
   const renderBenefits = () => (
-    <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
+    <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8 max-md:p-4">
       <h2 className="text-2xl font-bold text-white mb-6">Partner Benefits</h2>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="mb-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
         {[
           {
-            icon: "🎯",
+            icon: "🌟",
             title: "Custom DEX Profile",
             description:
               "Dedicated page showcasing metrics, trading pairs, incentives, and updates",
-            color: "purple",
           },
           {
-            icon: "📈",
-            title: "Boosted User Activity",
+            icon: "💰",
+            title: "DexPal Rewards Program",
             description:
-              "Rewards and points programs drive higher volumes and increase DAUs",
-            color: "blue",
-          },
-          {
-            icon: "🌟",
-            title: "Greater Visibility",
-            description:
-              "Featured content and marketing campaigns spotlight your DEX",
-            color: "emerald",
-          },
-          {
-            icon: "🤖",
-            title: "AI-Powered Onboarding",
-            description: "Tools and tutorials help users start trading quickly",
-            color: "orange",
-          },
-          {
-            icon: "📊",
-            title: "Pro-User Analytics",
-            description:
-              "Rich insights and performance tracking for serious traders",
-            color: "cyan",
+              "Users earn DexPal points, xp and achievements for their trading activity on your DEX",
           },
           {
             icon: "🏆",
-            title: "Gamified Growth",
+            title: "Leaderboards & Competitions",
             description:
-              "Quests, competitions, and leaderboards promote retention",
-            color: "pink",
+              "Traders can participate in volume-based incentives and exclusive trading competitions",
           },
           {
-            icon: "💬",
-            title: "Actionable Feedback",
-            description: "Direct user insights to inform product improvements",
-            color: "indigo",
+            icon: "👀",
+            title: "Greater Visibility",
+            description:
+              "Gain exposure through featured content and marketing campaigns spotlighting your DEX",
+          },
+          {
+            icon: "🎮",
+            title: "Gamified Growth",
+            description:
+              "Boost user retention with quests, daily check-ins, and achievement systems",
           },
           {
             icon: "🪙",
-            title: "Token Airdrop Eligibility",
+            title: "DexPal Token Airdrop",
             description:
-              "Early partners eligible for upcoming utility token airdrop",
-            color: "amber",
+              "Early users and partners are eligible for the upcoming token airdrop",
           },
         ].map((benefit, index) => (
           <div
             key={index}
-            className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 hover:border-purple-500/30 transition-all duration-300 group"
+            className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 max-md:p-4 hover:border-purple-500/30 transition-all duration-300 group"
+          >
+            <div className="flex items-start space-x-4">
+              <div className="text-3xl mb-2">{benefit.icon}</div>
+              <div>
+                <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-purple-400 transition-colors">
+                  {benefit.title}
+                </h3>
+                <p className="text-zinc-400 leading-relaxed">
+                  {benefit.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-xl font-bold text-white/80 mb-6">Coming Soon</h2>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {[
+          {
+            icon: "👛",
+            title: "DexPal Treasury",
+            description:
+              "A portion of prize pool contributions will be used to buy and stake your DEX's tokens or provide liquidity directly on your DEX",
+          },
+          {
+            icon: "💬",
+            title: "Actionable Feedback",
+            description:
+              "Receive direct user insights to inform and accelerate product improvements",
+          },
+          {
+            icon: "🤖",
+            title: "AI-Powered Onboarding",
+            description:
+              "Guided tools and tutorials that help users start trading quickly and confidently",
+          },
+          {
+            icon: "📈",
+            title: "Pro-User Analytics",
+            description:
+              "Advanced insights and performance tracking tailored for your users",
+          },
+        ].map((benefit, index) => (
+          <div
+            key={index}
+            className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 max-md:p-4 hover:border-purple-500/30 transition-all duration-300 group"
           >
             <div className="flex items-start space-x-4">
               <div className="text-3xl mb-2">{benefit.icon}</div>
@@ -423,310 +258,522 @@ const DexPalPartnershipDashboard = () => {
     </div>
   );
 
-  // Enhanced Partners display
-  const renderPartners = () => (
-    <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
-      <h2 className="text-2xl font-bold text-white mb-6">Partner Ecosystem</h2>
+  // New Universal Rewards Program page
+  const renderUniversalRewards = () => (
+    <div className="space-y-8">
+      <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8 max-md:p-4">
+        {/* Program Introduction */}
+        <div className="bg-gradient-to-r from-purple-900/20 to-purple-800/20 border border-purple-500/20 rounded-xl p-6 max-md:p-4 mb-8">
+          <h3 className="text-xl font-semibold text-purple-400 mb-3">
+            Universal Rewards Program
+          </h3>
+          <p className="text-zinc-200 leading-relaxed mb-4">
+            DexPal is launching the first{" "}
+            <span className="text-white font-semibold">
+              universal rewards program
+            </span>{" "}
+            for on-chain perpetuals trading. The program is designed to{" "}
+            <span className="text-white font-semibold">
+              increase trading volume and user engagement
+            </span>{" "}
+            for our partner DEXs while providing traders with meaningful
+            incentives.
+          </p>
+          <p className="text-zinc-200 leading-relaxed mb-4">
+            Users earn{" "}
+            <span className="text-white font-semibold">DexPal Rewards</span>{" "}
+            based on their trading volume and the fees they generate and{" "}
+            <span className="text-white font-semibold">
+              100% of the revenues collected
+            </span>{" "}
+            through our affiliate codes are redirected into a prize pool, which
+            is redistributed at the end of each epoch to eligible participants.
+          </p>
+        </div>
 
-      <div className="mb-8">
-        <p className="text-zinc-300 leading-relaxed">
-          Leading DEXs across multiple networks have joined the DexPal
-          ecosystem, representing diverse trading opportunities and cutting-edge
-          DeFi infrastructure.
-        </p>
-      </div>
+        <h1 className="text-3xl font-bold text-white mb-8">DexPal Rewards</h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
-        {confirmedPartners.map((partner, index) => (
-          <div
-            key={index}
-            className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 hover:border-purple-500/30 transition-all duration-300 group"
-          >
-            <div className="flex items-start justify-between mb-4">
-              <div>
-                <h3 className="font-semibold text-white text-lg group-hover:text-purple-400 transition-colors">
-                  {partner.name}
-                </h3>
-                <p className="text-zinc-400 text-sm">{partner.network}</p>
-              </div>
-              <div className="text-right">
-                <span
-                  className={`text-xs px-3 py-1 rounded-full font-medium border ${
-                    partner.status === "Confirmed"
-                      ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
-                      : "bg-amber-500/20 text-amber-400 border-amber-500/30"
-                  }`}
-                >
-                  {partner.status}
-                </span>
-              </div>
+        {/* DexPal Rewards Types */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+          <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6 max-md:p-4 hover:border-purple-500/30 transition-all duration-300 group">
+            <div className="w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center mb-4">
+              <span className="text-2xl">⭐</span>
             </div>
-
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span className="text-zinc-400">Tier:</span>
-                <span className="text-purple-400 font-medium">
-                  {partner.tier}
-                </span>
-              </div>
-            </div>
-
-            <div className="mt-4 w-full bg-zinc-700 rounded-full h-2">
-              <div
-                className="bg-gradient-to-r from-purple-500 to-purple-600 h-2 rounded-full transition-all duration-1000"
-                style={{
-                  width: partner.status === "Confirmed" ? "100%" : "75%",
-                }}
-              ></div>
-            </div>
+            <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-purple-400 transition-colors">
+              DexPal Points
+            </h3>
+            <p className="text-zinc-400 text-sm leading-relaxed">
+              Main reward currency earned from trading volume and contribution
+              to the prize pool. Points determine airdrop allocation and have
+              utility within our rewards systems.
+            </p>
           </div>
-        ))}
-      </div>
-    </div>
-  );
+          <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6 max-md:p-4 hover:border-emerald-500/30 transition-all duration-300 group">
+            <div className="w-12 h-12 bg-emerald-500/20 border border-emerald-500/30 rounded-xl flex items-center justify-center mb-4">
+              <span className="text-2xl">⚡</span>
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-emerald-400 transition-colors">
+              XP
+            </h3>
+            <p className="text-zinc-400 text-sm leading-relaxed">
+              Earned by completing specific tasks and quests. XP applies a{" "}
+              <span className="text-white font-medium">multiplier effect</span>{" "}
+              to points earned within each epoch.
+            </p>
+          </div>
+          <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6 max-md:p-4 hover:border-orange-500/30 transition-all duration-300 group">
+            <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center mb-4">
+              <span className="text-2xl">💎</span>
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-orange-400 transition-colors">
+              Collectibles (NFTs)
+            </h3>
+            <p className="text-zinc-400 text-sm leading-relaxed">
+              Holding certain collectibles grants members{" "}
+              <span className="text-white font-medium">permanent benefits</span>{" "}
+              such as exclusive access or boosters.
+            </p>
+          </div>
+        </div>
 
-  // Enhanced Pricing
-  const renderPricing = () => (
-    <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
-      <h2 className="text-2xl font-bold text-white mb-6">
-        Pricing & Incentives
-      </h2>
+        <h1 className="text-3xl font-bold text-white mb-8">
+          Prize Pool Rewards
+        </h1>
 
-      <div className="mb-8">
-        <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
+        {/* Prize Pool Funding */}
+        <div className="bg-gradient-to-r from-purple-900/20 to-purple-800/20 border border-purple-500/20 rounded-xl p-6 max-md:p-4 mb-8">
           <h3 className="text-xl font-semibold text-purple-400 mb-4">
-            Genesis Program
+            Prize Pool Funding
           </h3>
-          <p className="text-zinc-300 leading-relaxed mb-4">
-            DEXs who are part of the genesis program will pay between $2,500 -
-            $5,000 one time fee depending on the complexity of integration with
-            their APIs. After the genesis program we intend to increase the
-            Integration fees to a minimum of $10k.
+          <p className="text-zinc-200 leading-relaxed mb-4">
+            Funded entirely from:
           </p>
-          <p className="text-zinc-400 text-sm">
-            DexPal will limit the number of DEXs that participate in the Genesis
-            program to a maximum of 15.
-          </p>
+          <ul className="space-y-2 text-zinc-300">
+            <li className="flex items-center">
+              <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+              100% Affiliate revenue from DexPal referral codes
+            </li>
+            <li className="flex items-center">
+              <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+              Sponsorship deals with DEXs and other partners
+            </li>
+            <li className="flex items-center">
+              <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+              Ecosystem grants
+            </li>
+          </ul>
         </div>
-      </div>
 
-      <div className="mb-8">
-        <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
-          <h3 className="text-xl font-semibold text-emerald-400 mb-4">
-            DEX Giveaway (Optional)
+        {/* Distribution Breakdown */}
+        <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-8 max-md:p-4">
+          <h3 className="text-xl font-semibold text-purple-400 mb-6">
+            Intended Distribution at End of Each Epoch
           </h3>
-          <p className="text-zinc-300 leading-relaxed">
-            We encourage partner DEXs to sponsor a user giveaway in the range of
-            $2,000–$10,000 to DexPal users who trade on your DEX. These funds
-            will be exclusively used to reward DexPal users who trade on your
-            DEX. The details of the giveaway and rules will be determined in the
-            future.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-
-  // Simple content renderers for other sections
-  const renderRequirements = () => (
-    <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
-      <h2 className="text-2xl font-bold text-white mb-6">
-        Integration Requirements
-      </h2>
-      <p className="text-zinc-300 mb-6">
-        Technical requirements and integration specifications for partner DEXs.
-      </p>
-      <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
-        <h3 className="text-lg font-semibold text-purple-400 mb-4">
-          Core Requirements
-        </h3>
-        <ul className="space-y-3 text-zinc-300">
-          <li>• Integration fee cost</li>
-          <li>• Affiliate code system with 20%+ fee share</li>
-          <li>• REST API access for trading data</li>
-          <li>• Co-marketing agreement</li>
-          <li>• DEX onboarding information form</li>
-        </ul>
-      </div>
-    </div>
-  );
-
-  const renderMission = () => (
-    <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
-      <h2 className="text-2xl font-bold text-white mb-6">DexPal Overview</h2>
-      <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
-        <div className="aspect-video w-full rounded-lg overflow-hidden">
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/ubLtLPuepDM"
-            title="DexPal Overview Video"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            className="w-full h-full"
-          ></iframe>
-        </div>
-        <p className="text-zinc-400 text-sm mt-4 text-center">
-          Watch our overview video to learn how DexPal is revolutionizing DEX
-          trading
-        </p>
-      </div>
-    </div>
-  );
-
-  const renderRoadmap = () => (
-    <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
-      <h2 className="text-2xl font-bold text-white mb-6">Product Roadmap</h2>
-      <div className="space-y-6">
-        {[
-          {
-            phase: "Genesis Launch",
-            time: "Aug - Fall 2025",
-            desc: "Beta release with 10-15 partner DEXs",
-          },
-          {
-            phase: "Official Launch",
-            time: "Late Fall 2025",
-            desc: "Public release with full analytics and features",
-          },
-          {
-            phase: "Expansion",
-            time: "2026+",
-            desc: "Advanced features and global partnerships",
-          },
-        ].map((item, index) => (
-          <div
-            key={index}
-            className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6"
-          >
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-lg font-semibold text-white">{item.phase}</h3>
-              <span className="text-purple-400 font-medium text-sm bg-purple-500/20 px-3 py-1 rounded-full border border-purple-500/30">
-                {item.time}
-              </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-4 bg-zinc-800/60 rounded-lg border border-zinc-700/30">
+                <div className="flex items-center space-x-3">
+                  <div className="w-4 h-4 bg-emerald-500 rounded"></div>
+                  <span className="text-white font-medium">
+                    Cashback & Referrals
+                  </span>
+                </div>
+                <span className="text-emerald-400 font-bold text-xl">40%</span>
+              </div>
+              <div className="flex items-center justify-between p-4 bg-zinc-800/60 rounded-lg border border-zinc-700/30">
+                <div className="flex items-center space-x-3">
+                  <div className="w-4 h-4 bg-purple-500 rounded"></div>
+                  <span className="text-white font-medium">
+                    Points Leaderboards
+                  </span>
+                </div>
+                <span className="text-purple-400 font-bold text-xl">25%</span>
+              </div>
             </div>
-            <p className="text-zinc-400">{item.desc}</p>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-4 bg-zinc-800/60 rounded-lg border border-zinc-700/30">
+                <div className="flex items-center space-x-3">
+                  <div className="w-4 h-4 bg-blue-500 rounded"></div>
+                  <span className="text-white font-medium">
+                    DEX Competitions
+                  </span>
+                </div>
+                <span className="text-blue-400 font-bold text-xl">25%</span>
+              </div>
+              <div className="flex items-center justify-between p-4 bg-zinc-800/60 rounded-lg border border-zinc-700/30">
+                <div className="flex items-center space-x-3">
+                  <div className="w-4 h-4 bg-orange-500 rounded"></div>
+                  <span className="text-white font-medium">
+                    Treasury & Operations
+                  </span>
+                </div>
+                <span className="text-orange-400 font-bold text-xl">10%</span>
+              </div>
+            </div>
           </div>
-        ))}
+
+          {/* Distribution Details */}
+          <div className="mt-8 pt-6 border-t border-zinc-700/50">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+              <div>
+                <h4 className="text-emerald-400 font-semibold mb-2">
+                  Cashback & Referrals (40%)
+                </h4>
+                <p className="text-zinc-400 leading-relaxed">
+                  Fee rebates to users and referral bonuses for recommending
+                  friends to the platform.
+                </p>
+              </div>
+              <div>
+                <h4 className="text-purple-400 font-semibold mb-2">
+                  Points Leaderboards Competition (25%)
+                </h4>
+                <p className="text-zinc-400 leading-relaxed">
+                  Platform-wide leaderboard competitions based on who has the
+                  most points across all DEXs.
+                </p>
+              </div>
+              <div>
+                <h4 className="text-blue-400 font-semibold mb-2">
+                  DEX Exclusive Points Competitions (25%)
+                </h4>
+                <p className="text-zinc-400 leading-relaxed">
+                  DEX-specific leaderboard competitions for traders with the
+                  most points on individual platforms.
+                </p>
+              </div>
+              <div>
+                <h4 className="text-orange-400 font-semibold mb-2">
+                  Treasury & Operational Costs (10%)
+                </h4>
+                <p className="text-zinc-400 leading-relaxed">
+                  Platform maintenance, development, and strategic treasury
+                  reserves for long-term sustainability.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 
-  const renderOnboarding = () => (
-    <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
-      <h2 className="text-2xl font-bold text-white mb-6">Onboarding Process</h2>
-      <p className="text-zinc-300 mb-6">
-        Streamlined 2-4 week integration process with dedicated support.
-      </p>
-      <div className="space-y-4">
-        {[
-          {
-            step: "1",
-            title: "Initial Discussion",
-            desc: "Partnership call and requirement review",
-          },
-          {
-            step: "2",
-            title: "Technical Setup",
-            desc: "API integration and affiliate code setup",
-          },
-          {
-            step: "3",
-            title: "Testing Phase",
-            desc: "Integration testing and quality assurance",
-          },
-          {
-            step: "4",
-            title: "Go Live",
-            desc: "Launch partnership and marketing campaign",
-          },
-        ].map((item, index) => (
-          <div
-            key={index}
-            className="flex items-start space-x-4 bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6"
-          >
-            <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-purple-500/25">
-              {item.step}
+  const renderIntegrationRequirements = () => (
+    <div className="space-y-8">
+      <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8 max-md:p-4">
+        {/* Page Introduction */}
+        <div className="bg-gradient-to-r from-purple-900/20 to-purple-800/20 border border-purple-500/20 rounded-xl p-6 max-md:p-4 mb-8">
+          <h3 className="text-xl font-semibold text-purple-400 mb-3">
+            Integration Requirements
+          </h3>
+          <p className="text-zinc-200 leading-relaxed">
+            Technical requirements and integration specifications for partner
+            DEXs.
+          </p>
+        </div>
+
+        {/* Core Requirements - TODO: Add links to Git Repo + Google Form (?) */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-white mb-6">
+            Core Requirements
+          </h2>
+          <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-8 max-md:p-4">
+            <ul className="space-y-4 text-zinc-300 mb-6">
+              <li className="flex items-start">
+                <div className="w-2 h-2 bg-purple-400 rounded-full mr-4 mt-2 flex-shrink-0"></div>
+                <span>Integration fee</span>
+              </li>
+              <li className="flex items-start">
+                <div className="w-2 h-2 bg-purple-400 rounded-full mr-4 mt-2 flex-shrink-0"></div>
+                <span>
+                  Affiliate code (DEXPAL) with{" "}
+                  <span className="text-white font-semibold">
+                    20%+ fee share
+                  </span>
+                </span>
+              </li>
+              <li className="flex items-start">
+                <div className="w-2 h-2 bg-purple-400 rounded-full mr-4 mt-2 flex-shrink-0"></div>
+                <span>REST API access for trading data</span>
+              </li>
+              <li className="flex items-start">
+                <div className="w-2 h-2 bg-purple-400 rounded-full mr-4 mt-2 flex-shrink-0"></div>
+                <span>Co-marketing efforts</span>
+              </li>
+              <li className="flex items-start">
+                <div className="w-2 h-2 bg-purple-400 rounded-full mr-4 mt-2 flex-shrink-0"></div>
+                <span>DEX onboarding information form</span>
+              </li>
+              <li className="flex items-start">
+                <div className="w-2 h-2 bg-purple-400 rounded-full mr-4 mt-2 flex-shrink-0"></div>
+                <span>
+                  Updating your most recent info into your profile via your
+                  admin dashboard
+                </span>
+              </li>
+            </ul>
+            <div className="bg-purple-900/20 border border-purple-500/20 rounded-lg p-4">
+              <p className="text-purple-200 text-sm leading-relaxed">
+                All affiliate revenue is redirected to the prize pool, the
+                higher the affiliate %, the more DexPal points traders earn by
+                trading on your DEX.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Pricing & Incentives */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-white mb-6">
+            Pricing & Incentives
+          </h2>
+
+          <div className="space-y-6">
+            {/* Genesis Program */}
+            <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 max-md:p-4">
+              <h3 className="text-xl font-semibold text-purple-400 mb-4">
+                Genesis Program
+              </h3>
+              <p className="text-zinc-300 leading-relaxed mb-4">
+                DEXs who are part of the genesis program will pay between{" "}
+                <span className="text-white font-semibold">
+                  $2,500 - $5,000
+                </span>{" "}
+                one time fee depending on the complexity of integration with
+                their APIs. After the genesis program we intend to increase the
+                Integration fees to a minimum of{" "}
+                <span className="text-white font-semibold">$10k</span>.
+              </p>
+              <p className="text-zinc-400 text-sm">
+                DexPal will limit the number of DEXs that participate in the
+                Genesis program to a maximum of{" "}
+                <span className="text-purple-400 font-semibold">15</span>.
+              </p>
+            </div>
+
+            {/* Bootstrapping Competition */}
+            <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 max-md:p-4">
+              <h3 className="text-xl font-semibold text-purple-400 mb-4">
+                Bootstrapping your DEXs trading competition (Optional)
+              </h3>
+              <p className="text-zinc-300 leading-relaxed">
+                We encourage partner DEXs to sponsor a volume based competition
+                in the range of{" "}
+                <span className="text-white font-semibold">$2,000–$10,000</span>{" "}
+                to DexPal users who trade on your DEX. These funds will be
+                exclusively used to reward DexPal users and{" "}
+                <span className="text-purple-400 font-semibold">
+                  25% of all fees generated
+                </span>{" "}
+                by the usage of the affiliate codes from your DEX will be
+                contributed to this competition.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Co-Marketing Strategy */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-white mb-6">
+            Co-Marketing Strategy
+          </h2>
+          <p className="text-zinc-300 mb-6">
+            Comprehensive marketing approach to amplify both brands through
+            coordinated campaigns.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 max-md:p-4">
+              <h3 className="text-lg font-semibold text-purple-400 mb-4">
+                Launch Campaign
+              </h3>
+              <ul className="space-y-2 text-zinc-300 text-sm">
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                  Joint announcements
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                  Social media coordination
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                  Community cross-promotion
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                  Influencer outreach
+                </li>
+              </ul>
+            </div>
+            <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 max-md:p-4">
+              <h3 className="text-lg font-semibold text-purple-400 mb-4">
+                Ongoing Collaboration
+              </h3>
+              <ul className="space-y-2 text-zinc-300 text-sm">
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                  Monthly trading competitions
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                  Educational content creation
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                  Performance analytics
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                  Community events
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Onboarding Process */}
+        <div>
+          <h2 className="text-2xl font-bold text-white mb-6">
+            Onboarding Process
+          </h2>
+          <p className="text-zinc-300 mb-6">
+            Streamlined 2-4 week integration process with dedicated support.
+          </p>
+          <div className="space-y-4">
+            {[
+              {
+                step: "1",
+                title: "Initial Discussion",
+                desc: "Partnership call and requirement review",
+              },
+              {
+                step: "2",
+                title: "Technical Setup",
+                desc: "API integration and affiliate code setup",
+              },
+              {
+                step: "3",
+                title: "Testing Phase",
+                desc: "Integration testing and quality assurance",
+              },
+              {
+                step: "4",
+                title: "Go Live",
+                desc: "Launch partnership and marketing campaign",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="flex items-start space-x-4 bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 max-md:p-4"
+              >
+                <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-purple-500/25">
+                  {item.step}
+                </div>
+                <div>
+                  <h3 className="font-semibold text-white mb-1">
+                    {item.title}
+                  </h3>
+                  <p className="text-zinc-400 text-sm">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderProductRoadmap = () => (
+    <div className="space-y-8">
+      <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8 max-md:p-4">
+        {/* Page Introduction */}
+        <h2 className="text-2xl font-bold text-white mb-6">Product Roadmap</h2>
+
+        <div className="space-y-8">
+          {[
+            {
+              phase: "Genesis Launch",
+              time: "Q3 2025",
+              desc: "Beta release of our first version of the app focused on our rewards program with 10-15 partner DEXs.",
+              color: "emerald",
+              bgColor: "from-emerald-500 to-emerald-600",
+              borderColor: "border-emerald-500/30",
+              shadowColor: "shadow-emerald-500/25",
+            },
+            {
+              phase: "Official Launch",
+              time: "Q4 2025",
+              desc: "Wider Public release with additional analytics & rewards program features.",
+              color: "purple",
+              bgColor: "from-purple-500 to-purple-600",
+              borderColor: "border-purple-500/30",
+              shadowColor: "shadow-purple-500/25",
+            },
+            {
+              phase: "Expansion",
+              time: "Q2 2026",
+              desc: "Additional onboarding features and incentives campaigns to attract CEX & Forex Traders to DEXs.",
+              color: "blue",
+              bgColor: "from-blue-500 to-blue-600",
+              borderColor: "border-blue-500/30",
+              shadowColor: "shadow-blue-500/25",
+            },
+            {
+              phase: "TGE",
+              time: "Q3 2026",
+              desc: "TGE and airdrop to community and partners, implementation of brand new rewards program features incorporating our token.",
+              color: "orange",
+              bgColor: "from-orange-500 to-orange-600",
+              borderColor: "border-orange-500/30",
+              shadowColor: "shadow-orange-500/25",
+            },
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-8 max-md:p-4 hover:border-zinc-600/50 transition-all duration-300"
+            >
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-4">
+                <h3 className="text-2xl font-bold text-white mb-2 lg:mb-0">
+                  {item.phase}
+                </h3>
+                <span
+                  className={`text-${item.color}-400 font-bold text-lg bg-${item.color}-500/20 px-4 py-2 rounded-full border ${item.borderColor} w-fit`}
+                >
+                  {item.time}
+                </span>
+              </div>
+              <p className="text-zinc-300 leading-relaxed text-lg">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Additional info section */}
+        <div className="mt-12 bg-gradient-to-r from-zinc-800/40 to-zinc-700/40 border border-zinc-600/30 rounded-xl p-6 max-md:p-4">
+          <div className="flex items-start space-x-4">
+            <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+              <span className="text-blue-400 text-lg">🚀</span>
             </div>
             <div>
-              <h3 className="font-semibold text-white mb-1">{item.title}</h3>
-              <p className="text-zinc-400 text-sm">{item.desc}</p>
+              <h4 className="text-lg font-semibold text-white mb-2">
+                Join the Journey
+              </h4>
+              <p className="text-zinc-300 leading-relaxed">
+                Be part of the revolution in DeFi trading. Partner DEXs who join
+                during our Genesis phase will have exclusive benefits and early
+                access to all upcoming features.
+              </p>
             </div>
           </div>
-        ))}
-      </div>
-    </div>
-  );
-
-  const renderSupport = () => (
-    <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
-      <h2 className="text-2xl font-bold text-white mb-6">Technical Support</h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-purple-400 mb-4">
-            Integration Support
-          </h3>
-          <ul className="space-y-2 text-zinc-300 text-sm">
-            <li>• Dedicated technical team</li>
-            <li>• Real-time communication channels</li>
-            <li>• Comprehensive documentation</li>
-            <li>• Weekly progress check-ins</li>
-          </ul>
-        </div>
-        <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-purple-400 mb-4">
-            Ongoing Support
-          </h3>
-          <ul className="space-y-2 text-zinc-300 text-sm">
-            <li>• 24/7 monitoring and alerts</li>
-            <li>• Monthly performance reports</li>
-            <li>• Priority bug fixes</li>
-            <li>• Quarterly business reviews</li>
-          </ul>
         </div>
       </div>
     </div>
   );
 
-  const renderMarketing = () => (
-    <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
-      <h2 className="text-2xl font-bold text-white mb-6">
-        Co-Marketing Strategy
-      </h2>
-      <p className="text-zinc-300 mb-6">
-        Comprehensive marketing approach to amplify both brands through
-        coordinated campaigns.
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-purple-400 mb-4">
-            Launch Campaign
-          </h3>
-          <ul className="space-y-2 text-zinc-300 text-sm">
-            <li>• Joint press releases</li>
-            <li>• Social media coordination</li>
-            <li>• Community cross-promotion</li>
-            <li>• Influencer outreach</li>
-          </ul>
-        </div>
-        <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-purple-400 mb-4">
-            Ongoing Collaboration
-          </h3>
-          <ul className="space-y-2 text-zinc-300 text-sm">
-            <li>• Monthly trading competitions</li>
-            <li>• Educational content creation</li>
-            <li>• Performance analytics</li>
-            <li>• Community events</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
-
+  // TODO: Actually wire up form to send email to info@dexpal.io / hamed@dexpal.io
   const renderContact = () => (
-    <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
+    <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8 max-md:p-4">
       <h2 className="text-2xl font-bold text-white mb-6">Contact & Apply</h2>
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <div>
@@ -762,7 +809,7 @@ const DexPalPartnershipDashboard = () => {
             </div>
           </div>
 
-          <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
+          <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 max-md:p-4">
             <h4 className="font-semibold text-white mb-3">Next Steps</h4>
             <ol className="space-y-2 text-zinc-300 text-sm">
               <li>1. Email hamed@dexpal.ai</li>
@@ -774,7 +821,7 @@ const DexPalPartnershipDashboard = () => {
           </div>
         </div>
 
-        <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6">
+        <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 max-md:p-4">
           <h3 className="text-lg font-semibold text-purple-400 mb-4">
             Quick Application
           </h3>
@@ -839,26 +886,14 @@ const DexPalPartnershipDashboard = () => {
     switch (activeTab) {
       case "overview":
         return renderOverview();
-      case "mission":
-        return renderMission();
-      case "market":
-        return renderMarket();
       case "benefits":
         return renderBenefits();
+      case "rewards":
+        return renderUniversalRewards();
       case "requirements":
-        return renderRequirements();
-      case "pricing":
-        return renderPricing();
-      case "partners":
-        return renderPartners();
+        return renderIntegrationRequirements();
       case "roadmap":
-        return renderRoadmap();
-      case "onboarding":
-        return renderOnboarding();
-      case "support":
-        return renderSupport();
-      case "marketing":
-        return renderMarketing();
+        return renderProductRoadmap();
       case "contact":
         return renderContact();
       default:
@@ -870,115 +905,44 @@ const DexPalPartnershipDashboard = () => {
     <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950">
       {/* Header inspired by the design */}
       <header className="bg-gradient-to-r from-purple-600 to-purple-700 shadow-lg shadow-purple-500/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-12">
-              <div className="flex items-center">
-                <img
-                  src="/dexpal-full-white-logo.png"
-                  alt="DexPal Logo"
-                  className="h-11 w-auto mb-1"
-                />
-              </div>
-
-              {/* Navigation inspired by the image */}
-              <nav className="hidden lg:flex items-center space-x-8">
-                <Link
-                  to="/overview"
-                  className="text-white/90 hover:text-white font-medium transition-colors"
-                >
-                  Overview
-                </Link>
-                <Link
-                  to="/partner-benefits"
-                  className="text-white/90 hover:text-white font-medium transition-colors"
-                >
-                  Benefits
-                </Link>
-                <Link
-                  to="/pricing-and-incentives"
-                  className="text-white/90 hover:text-white font-medium transition-colors"
-                >
-                  Pricing
-                </Link>
-                <Link
-                  to="/partner-ecosystem"
-                  className="text-white/90 hover:text-white font-medium transition-colors"
-                >
-                  Partners
-                </Link>
-                <Link
-                  to="/contact-and-apply"
-                  className="text-white/90 hover:text-white font-medium transition-colors"
-                >
-                  Contact
-                </Link>
-              </nav>
-            </div>
-
-            <Link
-              to="/contact-and-apply"
+            <img
+              src="/dexpal-full-white-logo.png"
+              alt="DexPal Logo"
+              className="h-11 w-auto mb-1"
+            />
+            <button
+              onClick={() => setActiveTab("contact")}
               className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-medium px-6 py-2 rounded-lg transition-all duration-200 border border-white/20"
             >
               Apply Now
-            </Link>
+            </button>
           </div>
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-8 py-8">
         <DocumentationBanner />
 
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar inspired by the navigation structure */}
           <aside className="lg:w-80 flex-shrink-0">
-            <div className="bg-zinc-900/60 backdrop-blur-sm border border-zinc-800/50 rounded-xl p-6 sticky top-8">
-              <h3 className="text-lg font-semibold text-white mb-6">
-                Dashboard Navigation
-              </h3>
-
-              {sidebarStructure.map((group, groupIndex) => (
-                <div key={groupIndex} className="mb-6 last:mb-0">
+            <div className="bg-zinc-900/60 backdrop-blur-sm border border-zinc-800/50 rounded-xl p-6 max-md:p-4 sticky top-8">
+              <h3 className="text-lg font-semibold text-white mb-2">Menu</h3>
+              {sideBarNavLinks.map((link, index) => (
+                <div key={index} className="mb-2 last:mb-0">
                   <button
-                    onClick={() => toggleGroup(group.groupName)}
-                    className="flex items-center justify-between w-full px-3 py-2 text-left font-medium text-white hover:bg-zinc-800/50 rounded-lg transition-all duration-200 group"
+                    onClick={() => setActiveTab(link.id)}
+                    className={`flex items-center w-full text-left px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
+                      activeTab === link.id
+                        ? "bg-purple-500/20 text-purple-400 border border-purple-500/30"
+                        : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
+                    }`}
                   >
-                    <span className="text-sm">{group.groupName}</span>
-                    <svg
-                      className={`w-4 h-4 transition-transform duration-200 text-zinc-400 group-hover:text-purple-400 ${
-                        expandedGroups.includes(group.groupName)
-                          ? "rotate-90"
-                          : ""
-                      }`}
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <span className="mr-3 text-base">{link.icon}</span>
+                    {link.label}
                   </button>
-
-                  {expandedGroups.includes(group.groupName) && (
-                    <div className="ml-2 mt-2 space-y-1">
-                      {group.items.map((item) => (
-                        <Link
-                          key={item.id}
-                          to={item.route}
-                          className={`flex items-center w-full text-left px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
-                            activeTab === item.id
-                              ? "bg-purple-500/20 text-purple-400 border border-purple-500/30"
-                              : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
-                          }`}
-                        >
-                          <span className="mr-3 text-base">{item.icon}</span>
-                          {item.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
@@ -991,144 +955,10 @@ const DexPalPartnershipDashboard = () => {
 
       {/* Footer */}
       <footer className="bg-zinc-900/60 backdrop-blur-sm border-t border-zinc-800/50 mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center mb-4">
-                <img
-                  src="/dexpal-full-white-logo.png"
-                  alt="DexPal Logo"
-                  className="h-11 w-auto"
-                />
-              </div>
-              <p className="text-zinc-400 text-sm leading-relaxed">
-                The comprehensive platform for DEX trading analytics, rewards,
-                and partnerships.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-sm font-semibold text-white mb-4">Product</h3>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link
-                    to="/partner-benefits"
-                    className="text-zinc-400 hover:text-purple-400 transition-colors"
-                  >
-                    Benefits
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/pricing-and-incentives"
-                    className="text-zinc-400 hover:text-purple-400 transition-colors"
-                  >
-                    Pricing
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/integration-requirements"
-                    className="text-zinc-400 hover:text-purple-400 transition-colors"
-                  >
-                    API
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/technical-support"
-                    className="text-zinc-400 hover:text-purple-400 transition-colors"
-                  >
-                    Documentation
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-sm font-semibold text-white mb-4">
-                Partners
-              </h3>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link
-                    to="/contact-and-apply"
-                    className="text-zinc-400 hover:text-purple-400 transition-colors"
-                  >
-                    Become a Partner
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/partner-ecosystem"
-                    className="text-zinc-400 hover:text-purple-400 transition-colors"
-                  >
-                    Partner Portal
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/integration-requirements"
-                    className="text-zinc-400 hover:text-purple-400 transition-colors"
-                  >
-                    Integration Guide
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/technical-support"
-                    className="text-zinc-400 hover:text-purple-400 transition-colors"
-                  >
-                    Support
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-sm font-semibold text-white mb-4">Company</h3>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link
-                    to="/dexpal-overview"
-                    className="text-zinc-400 hover:text-purple-400 transition-colors"
-                  >
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/market-opportunity"
-                    className="text-zinc-400 hover:text-purple-400 transition-colors"
-                  >
-                    Market
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/product-roadmap"
-                    className="text-zinc-400 hover:text-purple-400 transition-colors"
-                  >
-                    Roadmap
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/contact-and-apply"
-                    className="text-zinc-400 hover:text-purple-400 transition-colors"
-                  >
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-zinc-800/50 mt-8 pt-8 text-center">
-            <p className="text-zinc-500 text-sm">
-              © 2025 DexPal. All rights reserved.
-            </p>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-8 py-12">
+          <p className="text-zinc-500 text-sm text-center">
+            © 2025 DexPal. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>
