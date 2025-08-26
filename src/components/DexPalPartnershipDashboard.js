@@ -12,9 +12,9 @@ const DexPalPartnershipDashboard = () => {
   };
 
   const [activeTab, setActiveTab] = useState(getCurrentTab);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Update activeTab when the route changes
-
   useEffect(() => {
     setActiveTab(getCurrentTab());
     // eslint-disable-next-line
@@ -23,6 +23,12 @@ const DexPalPartnershipDashboard = () => {
   // Handle tab navigation
   const handleTabChange = (tabId) => {
     navigate(`/${tabId}`);
+    setIsMobileMenuOpen(false); // Close mobile menu
+
+    // Scroll to top of main content
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 100);
   };
 
   const sideBarNavLinks = [
@@ -1226,22 +1232,86 @@ Content-Type: application/json
               alt="DexPal Logo"
               className="h-11 w-auto mb-1"
             />
-            <button
-              onClick={() => handleTabChange("contact")}
-              className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-medium px-6 py-2 rounded-lg transition-all duration-200 border border-white/20"
-            >
-              Apply Now
-            </button>
+
+            <div className="flex items-center space-x-3">
+              <button
+                onClick={() => handleTabChange("contact")}
+                className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-medium px-6 py-2 rounded-lg transition-all duration-200 border border-white/20"
+              >
+                Apply Now
+              </button>
+
+              {/* Mobile hamburger menu */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-2 rounded-lg transition-all duration-200 border border-white/20"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  {isMobileMenuOpen ? (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  ) : (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  )}
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </header>
+
+      {/* Mobile menu overlay */}
+      {isMobileMenuOpen && (
+        <div
+          className="lg:hidden fixed top-16 left-0 right-0 bottom-0 bg-black bg-opacity-50 z-40"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <div
+            className="fixed left-0 top-16 bottom-0 w-full bg-zinc-900 border-r border-zinc-800 shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-6">
+              <h3 className="text-lg font-semibold text-white mb-4">Menu</h3>
+              {sideBarNavLinks.map((link, index) => (
+                <div key={index} className="mb-2 last:mb-0">
+                  <button
+                    onClick={() => handleTabChange(link.id)}
+                    className={`flex items-center w-full text-left px-3 py-3 text-sm rounded-lg transition-all duration-200 ${
+                      activeTab === link.id
+                        ? "bg-purple-500/20 text-purple-400 border border-purple-500/30"
+                        : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
+                    }`}
+                  >
+                    <span className="mr-3 text-base">{link.icon}</span>
+                    {link.label}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-8 py-8">
         <DocumentationBanner />
 
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar inspired by the navigation structure */}
-          <aside className="lg:w-80 flex-shrink-0">
+          {/* Sidebar inspired by the navigation structure - Hidden on mobile */}
+          <aside className="hidden lg:block lg:w-80 flex-shrink-0">
             <div className="bg-zinc-900/60 backdrop-blur-sm border border-zinc-800/50 rounded-xl p-6 max-md:p-4 sticky top-8">
               <h3 className="text-lg font-semibold text-white mb-2">Menu</h3>
               {sideBarNavLinks.map((link, index) => (
