@@ -25,6 +25,11 @@ const DexPalPartnershipDashboard = () => {
       icon: "⚙️",
     },
     {
+      id: "api",
+      label: "API Requirements",
+      icon: "🔌",
+    },
+    {
       id: "roadmap",
       label: "Product Roadmap",
       icon: "🗺️",
@@ -683,6 +688,291 @@ const DexPalPartnershipDashboard = () => {
     </div>
   );
 
+  const renderAPIRequirements = () => (
+    <div className="space-y-8">
+      <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
+        {/* Page Introduction */}
+        <div className="bg-gradient-to-r from-blue-900/20 to-blue-800/20 border border-blue-500/20 rounded-xl p-6 mb-8">
+          <h3 className="text-xl font-semibold text-blue-400 mb-3">
+            DexPal API Integration Requirements
+          </h3>
+          <p className="text-zinc-200 leading-relaxed">
+            This document outlines the API endpoints and integration
+            requirements for DexPal.
+          </p>
+        </div>
+
+        {/* Overview */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-white mb-6">Overview</h2>
+          <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 mb-6">
+            <p className="text-zinc-300 leading-relaxed mb-4">
+              The DexPal API uses REST endpoints with JSON responses and
+              requires Bearer token authentication. All endpoints are hosted on{" "}
+              <code className="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-sm">
+                **.dexpal.ai
+              </code>{" "}
+              and return structured data for integration with external systems.
+            </p>
+            <div className="flex items-center space-x-3 bg-zinc-800/60 border border-zinc-600/50 rounded-lg p-4">
+              <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                <svg
+                  className="w-5 h-5 text-blue-400"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h4 className="font-medium text-white">GitHub Repository</h4>
+                <a
+                  href="https://github.com/dexpal-analytics/api-integration-requirements/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 text-sm font-mono transition-colors"
+                >
+                  github.com/dexpal-analytics/api-integration-requirements
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Volume Reports */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-white mb-6">Volume Reports</h2>
+          <p className="text-zinc-300 mb-6">
+            Information regarding trading volume reports for wallet addresses.
+          </p>
+
+          <div className="space-y-6">
+            {/* Request */}
+            <div>
+              <h3 className="text-lg font-semibold text-purple-400 mb-3">
+                Request
+              </h3>
+              <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
+                <pre className="text-green-400 text-sm font-mono">
+                  {`GET /volume-reports HTTP/1.1
+Host: **.dexpal.ai
+Authorization: Bearer <access_token>`}
+                </pre>
+              </div>
+            </div>
+
+            {/* Response */}
+            <div>
+              <h3 className="text-lg font-semibold text-purple-400 mb-3">
+                Response
+              </h3>
+              <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
+                <pre className="text-blue-400 text-sm font-mono">
+                  {`HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "reports": [
+    {
+      "wallet_address": "0x742d35Cc6634C0532925a3b844Bc9e7595f6E123",
+      "date": "2025-07-30",
+      "volume_usd": 150000.5,
+      "fees_usd": 375.25,
+      "transaction_count": 45,
+      "metadata": {
+        "pairs_traded": ["ETH/USDT", "BTC/USDT"],
+        "exchange_user_id": "user123"
+      }
+    }
+  ]
+}`}
+                </pre>
+              </div>
+            </div>
+
+            {/* Response Type */}
+            <div>
+              <h3 className="text-lg font-semibold text-purple-400 mb-3">
+                Response Type
+              </h3>
+              <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
+                <pre className="text-orange-400 text-sm font-mono">
+                  {`interface VolumeReport {
+  wallet_address: string;
+  date: string;
+  volume_usd: number;
+  fees_usd: number;
+  transaction_count?: number;
+  metadata?: Record<string, unknown>;
+}
+
+interface VolumeReportsResponse {
+  reports: VolumeReport[];
+}`}
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Referral Status */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-white mb-6">
+            Referral Status
+          </h2>
+          <p className="text-zinc-300 mb-6">
+            Information regarding the referral status of a user.
+          </p>
+
+          <div className="space-y-6">
+            {/* Request */}
+            <div>
+              <h3 className="text-lg font-semibold text-purple-400 mb-3">
+                Request
+              </h3>
+              <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
+                <pre className="text-green-400 text-sm font-mono">
+                  {`GET /referral-status HTTP/1.1
+Host: **.dexpal.ai
+Authorization: Bearer <access_token>`}
+                </pre>
+              </div>
+            </div>
+
+            {/* Parameters */}
+            <div>
+              <h3 className="text-lg font-semibold text-purple-400 mb-3">
+                Parameters
+              </h3>
+              <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-4">
+                <ul className="space-y-2 text-zinc-300">
+                  <li>
+                    <code className="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-sm">
+                      user_address
+                    </code>
+                    <span className="text-red-400 ml-2">(required)</span>
+                    <span className="ml-2">The user's wallet address.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Response */}
+            <div>
+              <h3 className="text-lg font-semibold text-purple-400 mb-3">
+                Response
+              </h3>
+              <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
+                <pre className="text-blue-400 text-sm font-mono">
+                  {`HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "is_active": true
+}`}
+                </pre>
+              </div>
+            </div>
+
+            {/* Response Type */}
+            <div>
+              <h3 className="text-lg font-semibold text-purple-400 mb-3">
+                Response Type
+              </h3>
+              <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
+                <pre className="text-orange-400 text-sm font-mono">
+                  {`interface ReferralStatusResponse {
+  is_active: boolean;
+}`}
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* DEX Points Balance */}
+        <div>
+          <h2 className="text-2xl font-bold text-white mb-6">
+            DEX Points Balance (Optional)
+          </h2>
+          <p className="text-zinc-300 mb-6">
+            Information regarding points balances for DEXs that have their own
+            points system.
+          </p>
+
+          <div className="space-y-6">
+            {/* Request */}
+            <div>
+              <h3 className="text-lg font-semibold text-purple-400 mb-3">
+                Request
+              </h3>
+              <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
+                <pre className="text-green-400 text-sm font-mono">
+                  {`GET /dex-points-balance HTTP/1.1
+Host: **.dexpal.ai
+Authorization: Bearer <access_token>`}
+                </pre>
+              </div>
+            </div>
+
+            {/* Parameters */}
+            <div>
+              <h3 className="text-lg font-semibold text-purple-400 mb-3">
+                Parameters
+              </h3>
+              <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-4">
+                <ul className="space-y-2 text-zinc-300">
+                  <li>
+                    <code className="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-sm">
+                      user_address
+                    </code>
+                    <span className="text-red-400 ml-2">(required)</span>
+                    <span className="ml-2">The user's wallet address.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Response */}
+            <div>
+              <h3 className="text-lg font-semibold text-purple-400 mb-3">
+                Response
+              </h3>
+              <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
+                <pre className="text-blue-400 text-sm font-mono">
+                  {`HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "points": 100
+}`}
+                </pre>
+              </div>
+            </div>
+
+            {/* Response Type */}
+            <div>
+              <h3 className="text-lg font-semibold text-purple-400 mb-3">
+                Response Type
+              </h3>
+              <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
+                <pre className="text-orange-400 text-sm font-mono">
+                  {`interface DEXPointsBalanceResponse {
+  points: number;
+}`}
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   const renderProductRoadmap = () => (
     <div className="space-y-8">
       <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8 max-md:p-4">
@@ -892,6 +1182,8 @@ const DexPalPartnershipDashboard = () => {
         return renderUniversalRewards();
       case "requirements":
         return renderIntegrationRequirements();
+      case "api":
+        return renderAPIRequirements();
       case "roadmap":
         return renderProductRoadmap();
       case "contact":
