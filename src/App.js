@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,56 +14,17 @@ function App() {
           {/* Default route redirects to overview */}
           <Route path="/" element={<Navigate to="/overview" replace />} />
 
-          {/* Partnership Overview routes */}
+          {/* Dashboard routes that match the actual sections */}
           <Route path="/overview" element={<DexPalPartnershipDashboard />} />
+          <Route path="/benefits" element={<DexPalPartnershipDashboard />} />
+          <Route path="/rewards" element={<DexPalPartnershipDashboard />} />
           <Route
-            path="/dexpal-overview"
+            path="/requirements"
             element={<DexPalPartnershipDashboard />}
           />
-          <Route
-            path="/market-opportunity"
-            element={<DexPalPartnershipDashboard />}
-          />
-          <Route
-            path="/partner-benefits"
-            element={<DexPalPartnershipDashboard />}
-          />
-
-          {/* Partnership Details routes */}
-          <Route
-            path="/integration-requirements"
-            element={<DexPalPartnershipDashboard />}
-          />
-          <Route
-            path="/pricing-and-incentives"
-            element={<DexPalPartnershipDashboard />}
-          />
-          <Route
-            path="/partner-ecosystem"
-            element={<DexPalPartnershipDashboard />}
-          />
-          <Route
-            path="/product-roadmap"
-            element={<DexPalPartnershipDashboard />}
-          />
-
-          {/* Resources & Knowledge routes */}
-          <Route
-            path="/onboarding-process"
-            element={<DexPalPartnershipDashboard />}
-          />
-          <Route
-            path="/technical-support"
-            element={<DexPalPartnershipDashboard />}
-          />
-          <Route
-            path="/co-marketing"
-            element={<DexPalPartnershipDashboard />}
-          />
-          <Route
-            path="/contact-and-apply"
-            element={<DexPalPartnershipDashboard />}
-          />
+          <Route path="/api" element={<DexPalPartnershipDashboard />} />
+          <Route path="/roadmap" element={<DexPalPartnershipDashboard />} />
+          <Route path="/contact" element={<DexPalPartnershipDashboard />} />
 
           {/* Catch all route - redirect to overview */}
           <Route path="*" element={<Navigate to="/overview" replace />} />

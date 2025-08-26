@@ -1,7 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const DexPalPartnershipDashboard = () => {
-  const [activeTab, setActiveTab] = useState("overview");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Get the current tab from the URL path
+  const getCurrentTab = () => {
+    const path = location.pathname.substring(1); // Remove the leading '/'
+    return path || "overview";
+  };
+
+  const [activeTab, setActiveTab] = useState(getCurrentTab);
+
+  // Update activeTab when the route changes
+
+  useEffect(() => {
+    setActiveTab(getCurrentTab());
+    // eslint-disable-next-line
+  }, [location.pathname]);
+
+  // Handle tab navigation
+  const handleTabChange = (tabId) => {
+    navigate(`/${tabId}`);
+  };
 
   const sideBarNavLinks = [
     {
@@ -1205,7 +1227,7 @@ Content-Type: application/json
               className="h-11 w-auto mb-1"
             />
             <button
-              onClick={() => setActiveTab("contact")}
+              onClick={() => handleTabChange("contact")}
               className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-medium px-6 py-2 rounded-lg transition-all duration-200 border border-white/20"
             >
               Apply Now
@@ -1225,7 +1247,7 @@ Content-Type: application/json
               {sideBarNavLinks.map((link, index) => (
                 <div key={index} className="mb-2 last:mb-0">
                   <button
-                    onClick={() => setActiveTab(link.id)}
+                    onClick={() => handleTabChange(link.id)}
                     className={`flex items-center w-full text-left px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
                       activeTab === link.id
                         ? "bg-purple-500/20 text-purple-400 border border-purple-500/30"
