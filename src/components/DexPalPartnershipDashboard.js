@@ -305,23 +305,19 @@ const DexPalPartnershipDashboard = () => {
             <span className="text-white font-semibold">
               universal rewards program
             </span>{" "}
-            for on-chain perpetuals trading. The program is designed to{" "}
-            <span className="text-white font-semibold">
-              increase trading volume and user engagement
-            </span>{" "}
-            for our partner DEXs while providing traders with meaningful
-            incentives.
+            for on-chain perpetuals, driving volume and engagement for partner
+            DEXs while rewarding traders with meaningful incentives.
           </p>
-          <p className="text-zinc-200 leading-relaxed mb-4">
-            Users earn{" "}
-            <span className="text-white font-semibold">DexPal Rewards</span>{" "}
-            based on their trading volume and the fees they generate and{" "}
-            <span className="text-white font-semibold">
-              100% of the revenues collected
-            </span>{" "}
-            through our affiliate codes are redirected into a prize pool, which
-            is redistributed at the end of each epoch to eligible participants.
-          </p>
+          <ul className="space-y-2 text-zinc-300 list-disc marker:text-purple-400 ml-6">
+            <li>
+              Users earn DexPal Rewards based on their trading volume and the
+              affiliate income they generate.
+            </li>
+            <li>
+              All affiliate income goes into a prize pool, fully redistributed
+              to eligible participants at the end of each epoch.
+            </li>
+          </ul>
         </div>
 
         <h1 className="text-3xl font-bold text-white mb-8">DexPal Rewards</h1>
@@ -381,19 +377,10 @@ const DexPalPartnershipDashboard = () => {
           <p className="text-zinc-200 leading-relaxed mb-4">
             Funded entirely from:
           </p>
-          <ul className="space-y-2 text-zinc-300">
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-              100% Affiliate revenue from DexPal referral codes
-            </li>
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-              Sponsorship deals with DEXs and other partners
-            </li>
-            <li className="flex items-center">
-              <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-              Ecosystem grants
-            </li>
+          <ul className="space-y-2 text-zinc-300 list-disc marker:text-purple-400 ml-6">
+            <li>100% Affiliate revenue from DexPal referral codes</li>
+            <li>Sponsorship deals with DEXs and other partners</li>
+            <li>Ecosystem grants</li>
           </ul>
         </div>
 
@@ -505,50 +492,30 @@ const DexPalPartnershipDashboard = () => {
           </p>
         </div>
 
-        {/* Core Requirements - TODO: Add links to Git Repo + Google Form (?) */}
+        {/* Core Requirements - TODO: Add links to Google Form (?) */}
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-white mb-6">
             Core Requirements
           </h2>
           <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-8 max-md:p-4">
-            <ul className="space-y-4 text-zinc-300 mb-6">
-              <li className="flex items-start">
-                <div className="w-2 h-2 bg-purple-400 rounded-full mr-4 mt-2 flex-shrink-0"></div>
-                <span>Integration fee</span>
+            <ul className="space-y-2 text-zinc-300 list-disc marker:text-purple-400 ml-6 mb-6">
+              <li>Integration fee</li>
+              <li>
+                Affiliate code (DEXPAL) with{" "}
+                <span className="text-white font-semibold">20%+ fee share</span>
               </li>
-              <li className="flex items-start">
-                <div className="w-2 h-2 bg-purple-400 rounded-full mr-4 mt-2 flex-shrink-0"></div>
-                <span>
-                  Affiliate code (DEXPAL) with{" "}
-                  <span className="text-white font-semibold">
-                    20%+ fee share
-                  </span>
+              <li>
+                REST API access for trading data (see '
+                <span className="text-white font-semibold">
+                  API Requirements
                 </span>
+                ' section)
               </li>
-              <li className="flex items-start">
-                <div className="w-2 h-2 bg-purple-400 rounded-full mr-4 mt-2 flex-shrink-0"></div>
-                <span>
-                  REST API access for trading data (see '
-                  <span className="text-white font-semibold">
-                    API Requirements
-                  </span>
-                  ' section)
-                </span>
-              </li>
-              <li className="flex items-start">
-                <div className="w-2 h-2 bg-purple-400 rounded-full mr-4 mt-2 flex-shrink-0"></div>
-                <span>Co-marketing efforts</span>
-              </li>
-              <li className="flex items-start">
-                <div className="w-2 h-2 bg-purple-400 rounded-full mr-4 mt-2 flex-shrink-0"></div>
-                <span>DEX onboarding information form</span>
-              </li>
-              <li className="flex items-start">
-                <div className="w-2 h-2 bg-purple-400 rounded-full mr-4 mt-2 flex-shrink-0"></div>
-                <span>
-                  Updating your most recent info into your profile via your
-                  admin dashboard
-                </span>
+              <li>Co-marketing efforts</li>
+              <li>DEX onboarding information form</li>
+              <li>
+                Updating your most recent info into your profile via your admin
+                dashboard
               </li>
             </ul>
             <div className="bg-purple-900/20 border border-purple-500/20 rounded-lg p-4">
@@ -625,46 +592,22 @@ const DexPalPartnershipDashboard = () => {
               <h3 className="text-lg font-semibold text-purple-400 mb-4">
                 Launch Campaign
               </h3>
-              <ul className="space-y-2 text-zinc-300 text-sm">
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-                  Joint announcements
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-                  Social media coordination
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-                  Community cross-promotion
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-                  Influencer outreach
-                </li>
+              <ul className="space-y-2 text-zinc-300 list-disc marker:text-purple-400 ml-6">
+                <li>Joint announcements</li>
+                <li>Social media coordination</li>
+                <li>Community cross-promotion</li>
+                <li>Influencer outreach</li>
               </ul>
             </div>
             <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 max-md:p-4">
               <h3 className="text-lg font-semibold text-purple-400 mb-4">
                 Ongoing Collaboration
               </h3>
-              <ul className="space-y-2 text-zinc-300 text-sm">
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-                  Monthly trading competitions
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-                  Educational content creation
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-                  Performance analytics
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-                  Community events
-                </li>
+              <ul className="space-y-2 text-zinc-300 list-disc marker:text-purple-400 ml-6">
+                <li>Monthly trading competitions</li>
+                <li>Educational content creation</li>
+                <li>Performance analytics</li>
+                <li>Community events</li>
               </ul>
             </div>
           </div>
@@ -1107,53 +1050,44 @@ interface MarketsDataResponse {
                 Notes
               </h3>
               <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-4">
-                <ul className="space-y-2 text-zinc-300 text-sm">
-                  <li className="flex items-start">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                    <span>
-                      If your platform does{" "}
-                      <span className="text-white font-semibold">
-                        not distinguish
-                      </span>{" "}
-                      between long and short funding rates, you may enter the
-                      rate in{" "}
-                      <span className="text-white font-semibold">
-                        hourly_funding_rate_longs
-                      </span>{" "}
-                      and set{" "}
-                      <span className="text-white font-semibold">
-                        hourly_funding_rate_shorts
-                      </span>{" "}
-                      to null.
-                    </span>
+                <ul className="space-y-2 text-zinc-300 list-disc marker:text-purple-400 ml-6">
+                  <li>
+                    If your platform does{" "}
+                    <span className="text-white font-semibold">
+                      not distinguish
+                    </span>{" "}
+                    between long and short funding rates, you may enter the rate
+                    in{" "}
+                    <span className="text-white font-semibold">
+                      hourly_funding_rate_longs
+                    </span>{" "}
+                    and set{" "}
+                    <span className="text-white font-semibold">
+                      hourly_funding_rate_shorts
+                    </span>{" "}
+                    to null.
                   </li>
-                  <li className="flex items-start">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                    <span>
-                      <span className="text-white font-semibold">
-                        listing_date
-                      </span>{" "}
-                      should reflect the first time this market was made
-                      available on your platform.
-                    </span>
+                  <li>
+                    <span className="text-white font-semibold">
+                      listing_date
+                    </span>{" "}
+                    should reflect the first time this market was made available
+                    on your platform.
                   </li>
-                  <li className="flex items-start">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                    <span>
-                      <span className="text-white font-semibold">
-                        index_price
-                      </span>
-                      ,{" "}
-                      <span className="text-white font-semibold">
-                        open_interest
-                      </span>{" "}
-                      and{" "}
-                      <span className="text-white font-semibold">
-                        trading_volume
-                      </span>{" "}
-                      values should be in{" "}
-                      <span className="text-white font-semibold">USD</span>.
+                  <li>
+                    <span className="text-white font-semibold">
+                      index_price
                     </span>
+                    ,{" "}
+                    <span className="text-white font-semibold">
+                      open_interest
+                    </span>{" "}
+                    and{" "}
+                    <span className="text-white font-semibold">
+                      trading_volume
+                    </span>{" "}
+                    values should be in{" "}
+                    <span className="text-white font-semibold">USD</span>.
                   </li>
                 </ul>
               </div>
