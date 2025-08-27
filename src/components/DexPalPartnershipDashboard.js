@@ -720,13 +720,12 @@ const DexPalPartnershipDashboard = () => {
     <div className="space-y-8">
       <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
         {/* Page Introduction */}
-        <div className="bg-gradient-to-r from-blue-900/20 to-blue-800/20 border border-blue-500/20 rounded-xl p-6 mb-8">
-          <h3 className="text-xl font-semibold text-blue-400 mb-3">
-            DexPal API Integration Requirements
+        <div className="bg-gradient-to-r from-purple-900/20 to-purple-800/20 border border-purple-500/20 rounded-xl p-6 max-md:p-4 mb-8">
+          <h3 className="text-xl font-semibold text-purple-400 mb-3">
+            DexPal API Requirements
           </h3>
           <p className="text-zinc-200 leading-relaxed">
-            This document outlines the API endpoints and integration
-            requirements for DexPal.
+            Outlines the API endpoints required for integrating with DexPal
           </p>
         </div>
 
@@ -738,7 +737,7 @@ const DexPalPartnershipDashboard = () => {
               The DexPal API uses REST endpoints with JSON responses and
               requires Bearer token authentication. All endpoints are hosted on{" "}
               <code className="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-sm">
-                **.dexpal.ai
+                **.dexpal.io
               </code>{" "}
               and return structured data for integration with external systems.
             </p>
@@ -785,9 +784,9 @@ const DexPalPartnershipDashboard = () => {
                 Request
               </h3>
               <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
-                <pre className="text-green-400 text-sm font-mono">
+                <pre className="text-white text-sm font-mono">
                   {`GET /volume-reports HTTP/1.1
-Host: **.dexpal.ai
+Host: **.dexpal.io
 Authorization: Bearer <access_token>`}
                 </pre>
               </div>
@@ -799,7 +798,7 @@ Authorization: Bearer <access_token>`}
                 Response
               </h3>
               <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
-                <pre className="text-blue-400 text-sm font-mono">
+                <pre className="text-white text-sm font-mono">
                   {`HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -828,7 +827,7 @@ Content-Type: application/json
                 Response Type
               </h3>
               <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
-                <pre className="text-orange-400 text-sm font-mono">
+                <pre className="text-white text-sm font-mono">
                   {`interface VolumeReport {
   wallet_address: string;
   date: string;
@@ -863,9 +862,9 @@ interface VolumeReportsResponse {
                 Request
               </h3>
               <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
-                <pre className="text-green-400 text-sm font-mono">
+                <pre className="text-white text-sm font-mono">
                   {`GET /referral-status HTTP/1.1
-Host: **.dexpal.ai
+Host: **.dexpal.io
 Authorization: Bearer <access_token>`}
                 </pre>
               </div>
@@ -895,7 +894,7 @@ Authorization: Bearer <access_token>`}
                 Response
               </h3>
               <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
-                <pre className="text-blue-400 text-sm font-mono">
+                <pre className="text-white text-sm font-mono">
                   {`HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -912,7 +911,7 @@ Content-Type: application/json
                 Response Type
               </h3>
               <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
-                <pre className="text-orange-400 text-sm font-mono">
+                <pre className="text-white text-sm font-mono">
                   {`interface ReferralStatusResponse {
   is_active: boolean;
 }`}
@@ -923,7 +922,7 @@ Content-Type: application/json
         </div>
 
         {/* DEX Points Balance */}
-        <div>
+        <div className="mb-12">
           <h2 className="text-2xl font-bold text-white mb-6">
             DEX Points Balance (Optional)
           </h2>
@@ -939,9 +938,9 @@ Content-Type: application/json
                 Request
               </h3>
               <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
-                <pre className="text-green-400 text-sm font-mono">
+                <pre className="text-white text-sm font-mono">
                   {`GET /dex-points-balance HTTP/1.1
-Host: **.dexpal.ai
+Host: **.dexpal.io
 Authorization: Bearer <access_token>`}
                 </pre>
               </div>
@@ -971,7 +970,7 @@ Authorization: Bearer <access_token>`}
                 Response
               </h3>
               <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
-                <pre className="text-blue-400 text-sm font-mono">
+                <pre className="text-white text-sm font-mono">
                   {`HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -988,11 +987,165 @@ Content-Type: application/json
                 Response Type
               </h3>
               <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
-                <pre className="text-orange-400 text-sm font-mono">
+                <pre className="text-white text-sm font-mono">
                   {`interface DEXPointsBalanceResponse {
   points: number;
 }`}
                 </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Markets Data */}
+        <div>
+          <h2 className="text-2xl font-bold text-white mb-6">Markets Data</h2>
+          <p className="text-zinc-300 mb-6">
+            Metadata and statistics about all actively listed perpetual futures
+            markets on your platform.
+          </p>
+
+          <div className="space-y-6">
+            {/* Request */}
+            <div>
+              <h3 className="text-lg font-semibold text-purple-400 mb-3">
+                Request
+              </h3>
+              <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
+                <pre className="text-white text-sm font-mono">
+                  {`GET /markets HTTP/1.1
+Host: **.dexpal.io
+Authorization: Bearer <access_token>`}
+                </pre>
+              </div>
+            </div>
+
+            {/* Response */}
+            <div>
+              <h3 className="text-lg font-semibold text-purple-400 mb-3">
+                Response
+              </h3>
+              <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
+                <pre className="text-white text-sm font-mono">
+                  {`HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "markets": [
+    {
+      "base": "BTC",
+      "quote": "USDC",
+      "asset_type": "crypto",
+      "index_price": 114544.10,
+      "percentage_change_24h": 0.29,
+      "open_interest": 4532238.84,
+      "open_interest_longs": 2492731.36,
+      "open_interest_shorts": 2039507.48,
+      "trading_volume_24h": 145682128.24,
+      "trading_volume_24h_longs": 80125170.53,
+      "trading_volume_24h_shorts": 65556957.71,
+      "hourly_funding_rate_longs": -0.0011,
+      "hourly_funding_rate_shorts": 0.0014,
+      "max_leverage": 100,
+      "maker_fee": 0.02,
+      "taker_fee": 0.04,
+      "listing_date": "2025-08-04T04:50:00.771586+00:00"
+    }
+  ]
+}`}
+                </pre>
+              </div>
+            </div>
+
+            {/* Response Type */}
+            <div>
+              <h3 className="text-lg font-semibold text-purple-400 mb-3">
+                Response Type
+              </h3>
+              <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-4 overflow-x-auto">
+                <pre className="text-white text-sm font-mono">
+                  {`interface MarketData {
+  base: string;
+  quote: string;
+  asset_type: string;
+  index_price: number;
+  percentage_change_24h: number;
+  open_interest: number;
+  open_interest_longs: number;
+  open_interest_shorts: number;
+  trading_volume_24h: number;
+  trading_volume_24h_longs: number;
+  trading_volume_24h_shorts: number;
+  hourly_funding_rate_longs: number | null;
+  hourly_funding_rate_shorts: number | null;
+  max_leverage: number;
+  maker_fee: number;
+  taker_fee: number;
+  listing_date: string;
+}
+
+interface MarketsDataResponse {
+  markets: MarketData[];
+}`}
+                </pre>
+              </div>
+            </div>
+
+            {/* Notes */}
+            <div>
+              <h3 className="text-lg font-semibold text-purple-400 mb-3">
+                Notes
+              </h3>
+              <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-4">
+                <ul className="space-y-2 text-zinc-300 text-sm">
+                  <li className="flex items-start">
+                    <div className="w-2 h-2 bg-purple-400 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                    <span>
+                      If your platform does{" "}
+                      <span className="text-white font-semibold">
+                        not distinguish
+                      </span>{" "}
+                      between long and short funding rates, you may enter the
+                      rate in{" "}
+                      <span className="text-white font-semibold">
+                        hourly_funding_rate_longs
+                      </span>{" "}
+                      and set{" "}
+                      <span className="text-white font-semibold">
+                        hourly_funding_rate_shorts
+                      </span>{" "}
+                      to null.
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="w-2 h-2 bg-purple-400 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                    <span>
+                      <span className="text-white font-semibold">
+                        listing_date
+                      </span>{" "}
+                      should reflect the first time this market was made
+                      available on your platform.
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="w-2 h-2 bg-purple-400 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                    <span>
+                      <span className="text-white font-semibold">
+                        index_price
+                      </span>
+                      ,{" "}
+                      <span className="text-white font-semibold">
+                        open_interest
+                      </span>{" "}
+                      and{" "}
+                      <span className="text-white font-semibold">
+                        trading_volume
+                      </span>{" "}
+                      values should be in{" "}
+                      <span className="text-white font-semibold">USD</span>.
+                    </span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -1108,7 +1261,7 @@ Content-Type: application/json
                   Business Development
                 </div>
                 <div className="text-purple-400 text-sm font-mono">
-                  hamed@dexpal.ai
+                  hamed@dexpal.io
                 </div>
               </div>
             </div>
@@ -1121,7 +1274,7 @@ Content-Type: application/json
                   Technical Integration
                 </div>
                 <div className="text-purple-400 text-sm font-mono">
-                  hamed@dexpal.ai
+                  hamed@dexpal.io
                 </div>
               </div>
             </div>
@@ -1130,7 +1283,7 @@ Content-Type: application/json
           <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 max-md:p-4">
             <h4 className="font-semibold text-white mb-3">Next Steps</h4>
             <ol className="space-y-2 text-zinc-300 text-sm">
-              <li>1. Email hamed@dexpal.ai</li>
+              <li>1. Email hamed@dexpal.io</li>
               <li>2. Schedule intro call</li>
               <li>3. Review technical requirements</li>
               <li>4. Sign partnership agreement</li>
@@ -1224,7 +1377,7 @@ Content-Type: application/json
   return (
     <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950">
       {/* Header inspired by the design */}
-      <header className="bg-gradient-to-r from-purple-600 to-purple-700 shadow-lg shadow-purple-500/20">
+      <header className="bg-gradient-to-r from-purple-700 to-purple-800 shadow-lg shadow-purple-600/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <img
