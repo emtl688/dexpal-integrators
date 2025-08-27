@@ -527,7 +527,13 @@ const DexPalPartnershipDashboard = () => {
               </li>
               <li className="flex items-start">
                 <div className="w-2 h-2 bg-purple-400 rounded-full mr-4 mt-2 flex-shrink-0"></div>
-                <span>REST API access for trading data</span>
+                <span>
+                  REST API access for trading data (see '
+                  <span className="text-white font-semibold">
+                    API Requirements
+                  </span>
+                  ' section)
+                </span>
               </li>
               <li className="flex items-start">
                 <div className="w-2 h-2 bg-purple-400 rounded-full mr-4 mt-2 flex-shrink-0"></div>
@@ -1038,17 +1044,19 @@ Content-Type: application/json
       "asset_type": "crypto",
       "index_price": 114544.10,
       "percentage_change_24h": 0.29,
+      "spread": 0.03,
       "open_interest": 4532238.84,
       "open_interest_longs": 2492731.36,
       "open_interest_shorts": 2039507.48,
       "trading_volume_24h": 145682128.24,
       "trading_volume_24h_longs": 80125170.53,
       "trading_volume_24h_shorts": 65556957.71,
+      "trades_24h": 7812,
       "hourly_funding_rate_longs": -0.0011,
       "hourly_funding_rate_shorts": 0.0014,
-      "max_leverage": 100,
       "maker_fee": 0.02,
       "taker_fee": 0.04,
+      "max_leverage": 100,
       "listing_date": "2025-08-04T04:50:00.771586+00:00"
     }
   ]
@@ -1070,17 +1078,19 @@ Content-Type: application/json
   asset_type: string;
   index_price: number;
   percentage_change_24h: number;
+  spread: number;
   open_interest: number;
   open_interest_longs: number;
   open_interest_shorts: number;
   trading_volume_24h: number;
   trading_volume_24h_longs: number;
   trading_volume_24h_shorts: number;
+  trades_24h: number;
   hourly_funding_rate_longs: number | null;
   hourly_funding_rate_shorts: number | null;
-  max_leverage: number;
   maker_fee: number;
   taker_fee: number;
+  max_leverage: number;
   listing_date: string;
 }
 
@@ -1377,7 +1387,7 @@ interface MarketsDataResponse {
   return (
     <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950">
       {/* Header inspired by the design */}
-      <header className="bg-gradient-to-r from-purple-700 to-purple-800 shadow-lg shadow-purple-600/20">
+      <header className="bg-gradient-to-r from-purple-800 to-purple-900 shadow-lg shadow-purple-700/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <img
@@ -1389,7 +1399,7 @@ interface MarketsDataResponse {
             <div className="flex items-center space-x-3">
               <button
                 onClick={() => handleTabChange("contact")}
-                className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-medium px-6 py-2 rounded-lg transition-all duration-200 border border-white/20"
+                className="max-lg:px-4 max-lg:text-sm bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-medium px-6 py-2 rounded-lg transition-all duration-200 border border-white/20"
               >
                 Apply Now
               </button>
