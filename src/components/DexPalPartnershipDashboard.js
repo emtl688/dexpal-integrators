@@ -704,7 +704,7 @@ const DexPalPartnershipDashboard = () => {
 
   const renderAPIRequirements = () => (
     <div className="space-y-8">
-      <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8">
+      <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8 max-md:p-4">
         {/* Page Introduction */}
         <div className="bg-gradient-to-r from-purple-900/20 to-purple-800/20 border border-purple-500/20 rounded-xl p-6 max-md:p-4 mb-8">
           <h3 className="text-xl font-semibold text-purple-400 mb-3">
