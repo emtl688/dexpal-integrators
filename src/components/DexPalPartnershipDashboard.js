@@ -362,12 +362,14 @@ const DexPalPartnershipDashboard = () => {
         {/* DexPal Rewards Types */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
           <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6 max-md:p-4 hover:border-purple-500/30 transition-all duration-300 group">
-            <div className="w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center mb-4">
-              <span className="text-2xl">⭐</span>
+            <div className="mb-4 flex items-center gap-3">
+              <div className="w-10 h-10 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center">
+                <span className="text-xl">⭐</span>
+              </div>
+              <h3 className="text-2xl lg:text-xl font-semibold text-white group-hover:text-purple-400 transition-colors">
+                DexPal Points
+              </h3>
             </div>
-            <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-purple-400 transition-colors">
-              DexPal Points
-            </h3>
             <p className="text-zinc-400 text-sm leading-relaxed">
               Main reward currency earned from trading volume and contribution
               to the prize pool. Points determine airdrop allocation and have
@@ -375,12 +377,14 @@ const DexPalPartnershipDashboard = () => {
             </p>
           </div>
           <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6 max-md:p-4 hover:border-emerald-500/30 transition-all duration-300 group">
-            <div className="w-12 h-12 bg-emerald-500/20 border border-emerald-500/30 rounded-xl flex items-center justify-center mb-4">
-              <span className="text-2xl">⚡</span>
+            <div className="mb-4 flex items-center gap-3">
+              <div className="w-10 h-10 bg-emerald-500/20 border border-emerald-500/30 rounded-xl flex items-center justify-center">
+                <span className="text-xl">⚡</span>
+              </div>
+              <h3 className="text-2xl lg:text-xl font-semibold text-white group-hover:text-emerald-400 transition-colors">
+                XP
+              </h3>
             </div>
-            <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-emerald-400 transition-colors">
-              XP
-            </h3>
             <p className="text-zinc-400 text-sm leading-relaxed">
               Earned by completing specific tasks and quests. XP applies a{" "}
               <span className="text-white font-medium">multiplier effect</span>{" "}
@@ -388,14 +392,16 @@ const DexPalPartnershipDashboard = () => {
             </p>
           </div>
           <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-xl p-6 max-md:p-4 hover:border-orange-500/30 transition-all duration-300 group">
-            <div className="w-12 h-12 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center mb-4">
-              <span className="text-2xl">💎</span>
+            <div className="mb-4 flex items-center gap-3">
+              <div className="w-10 h-10 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center">
+                <span className="text-xl">💎</span>
+              </div>
+              <h3 className="text-2xl lg:text-xl font-semibold text-white group-hover:text-orange-400 transition-colors">
+                Collectibles
+              </h3>
             </div>
-            <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-orange-400 transition-colors">
-              Collectibles (NFTs)
-            </h3>
             <p className="text-zinc-400 text-sm leading-relaxed">
-              Holding certain collectibles grants members{" "}
+              Holding certain collectibles (NFTs) grants members{" "}
               <span className="text-white font-medium">permanent benefits</span>{" "}
               such as exclusive access or boosters.
             </p>
@@ -1259,7 +1265,7 @@ Content-Type: application/json
           {[
             {
               phase: "Genesis Launch",
-              time: "Q3 2025",
+              time: "Q4 2025",
               desc: "Beta release of our first version of the app focused on our rewards program with 10-15 partner DEXs.",
               color: "emerald",
               bgColor: "from-emerald-500 to-emerald-600",
@@ -1268,7 +1274,7 @@ Content-Type: application/json
             },
             {
               phase: "Official Launch",
-              time: "Q4 2025",
+              time: "Q1 2026",
               desc: "Wider Public release with additional analytics & rewards program features.",
               color: "purple",
               bgColor: "from-purple-500 to-purple-600",
