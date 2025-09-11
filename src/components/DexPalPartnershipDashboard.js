@@ -106,6 +106,49 @@ const DexPalPartnershipDashboard = () => {
     },
   ];
 
+  // Navigation order mapping
+  const navigationOrder = [
+    { id: "overview", label: "Overview" },
+    { id: "benefits", label: "Partner Benefits" },
+    { id: "rewards", label: "Universal Rewards Program" },
+    { id: "requirements", label: "Integration Requirements" },
+    { id: "api", label: "API Requirements" },
+    { id: "roadmap", label: "Product Roadmap" },
+    { id: "contact", label: "Contact & Apply" },
+  ];
+
+  // Get next page info
+  const getNextPage = (currentTab) => {
+    const currentIndex = navigationOrder.findIndex(
+      (page) => page.id === currentTab
+    );
+    if (currentIndex >= 0 && currentIndex < navigationOrder.length - 1) {
+      return navigationOrder[currentIndex + 1];
+    }
+    return null;
+  };
+
+  // Next Button Component
+  const NextButton = ({ currentTab }) => {
+    const nextPage = getNextPage(currentTab);
+
+    if (!nextPage) return null;
+
+    return (
+      <div className="flex flex-col items-center mt-12">
+        <button
+          onClick={() => handleTabChange(nextPage.id)}
+          className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-lg text-white font-medium py-3 px-6 rounded-xl transition-all duration-300 shadow-sm shadow-purple-500/25 hover:shadow-purple-500/40 hover:scale-105"
+        >
+          Next
+        </button>
+        <span className="text-sm text-zinc-400 mt-2 text-center">
+          {nextPage.label}
+        </span>
+      </div>
+    );
+  };
+
   // Header banner inspired by the design
   const DocumentationBanner = () => (
     <div className="bg-zinc-900/50 border-l-4 border-purple-500 rounded-lg p-6 max-md:p-4 mb-8 backdrop-blur-sm">
@@ -212,119 +255,125 @@ const DexPalPartnershipDashboard = () => {
           </p>
         </div>
       </div>
+
+      <NextButton currentTab={activeTab} />
     </div>
   );
 
   // Enhanced Partner Benefits
   const renderBenefits = () => (
-    <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8 max-md:p-4">
-      <h2 className="text-2xl font-bold text-white mb-6">Partner Benefits</h2>
+    <div className="space-y-8">
+      <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8 max-md:p-4">
+        <h2 className="text-2xl font-bold text-white mb-6">Partner Benefits</h2>
 
-      <div className="mb-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {[
-          {
-            icon: "🌟",
-            title: "Custom DEX Profile",
-            description:
-              "Dedicated page showcasing metrics, trading pairs, incentives, and updates",
-          },
-          {
-            icon: "💰",
-            title: "DexPal Rewards Program",
-            description:
-              "Users earn DexPal points, xp and achievements for their trading activity on your DEX",
-          },
-          {
-            icon: "🏆",
-            title: "Leaderboards & Competitions",
-            description:
-              "Traders can participate in volume-based incentives and exclusive trading competitions",
-          },
-          {
-            icon: "👀",
-            title: "Greater Visibility",
-            description:
-              "Gain exposure through featured content and marketing campaigns spotlighting your DEX",
-          },
-          {
-            icon: "🎮",
-            title: "Gamified Growth",
-            description:
-              "Boost user retention with quests, daily check-ins, and achievement systems",
-          },
-          {
-            icon: "🪙",
-            title: "DexPal Token Airdrop",
-            description:
-              "Early users and partners are eligible for the upcoming token airdrop",
-          },
-        ].map((benefit, index) => (
-          <div
-            key={index}
-            className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 max-md:p-4 hover:border-purple-500/30 transition-all duration-300 group"
-          >
-            <div className="flex items-start space-x-4">
-              <div className="text-3xl mb-2">{benefit.icon}</div>
-              <div>
-                <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-purple-400 transition-colors">
-                  {benefit.title}
-                </h3>
-                <p className="text-zinc-400 leading-relaxed">
-                  {benefit.description}
-                </p>
+        <div className="mb-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {[
+            {
+              icon: "🌟",
+              title: "Custom DEX Profile",
+              description:
+                "Dedicated page showcasing metrics, trading pairs, incentives, and updates",
+            },
+            {
+              icon: "💰",
+              title: "DexPal Rewards Program",
+              description:
+                "Users earn DexPal points, xp and achievements for their trading activity on your DEX",
+            },
+            {
+              icon: "🏆",
+              title: "Leaderboards & Competitions",
+              description:
+                "Traders can participate in volume-based incentives and exclusive trading competitions",
+            },
+            {
+              icon: "👀",
+              title: "Greater Visibility",
+              description:
+                "Gain exposure through featured content and marketing campaigns spotlighting your DEX",
+            },
+            {
+              icon: "🎮",
+              title: "Gamified Growth",
+              description:
+                "Boost user retention with quests, daily check-ins, and achievement systems",
+            },
+            {
+              icon: "🪙",
+              title: "DexPal Token Airdrop",
+              description:
+                "Early users and partners are eligible for the upcoming token airdrop",
+            },
+          ].map((benefit, index) => (
+            <div
+              key={index}
+              className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 max-md:p-4 hover:border-purple-500/30 transition-all duration-300 group"
+            >
+              <div className="flex items-start space-x-4">
+                <div className="text-3xl mb-2">{benefit.icon}</div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-purple-400 transition-colors">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-zinc-400 leading-relaxed">
+                    {benefit.description}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <h2 className="text-xl font-bold text-white/80 mb-6">Coming Soon</h2>
+        <h2 className="text-xl font-bold text-white/80 mb-6">Coming Soon</h2>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {[
-          {
-            icon: "👛",
-            title: "DexPal Treasury",
-            description:
-              "A portion of prize pool contributions will be used to buy and stake your DEX's tokens or provide liquidity directly on your DEX",
-          },
-          {
-            icon: "💬",
-            title: "Actionable Feedback",
-            description:
-              "Receive direct user insights to inform and accelerate product improvements",
-          },
-          {
-            icon: "🤖",
-            title: "AI-Powered Onboarding",
-            description:
-              "Guided tools and tutorials that help users start trading quickly and confidently",
-          },
-          {
-            icon: "📈",
-            title: "Pro-User Analytics",
-            description:
-              "Advanced insights and performance tracking tailored for your users",
-          },
-        ].map((benefit, index) => (
-          <div
-            key={index}
-            className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 max-md:p-4 hover:border-purple-500/30 transition-all duration-300 group"
-          >
-            <div className="flex items-start space-x-4">
-              <div className="text-3xl mb-2">{benefit.icon}</div>
-              <div>
-                <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-purple-400 transition-colors">
-                  {benefit.title}
-                </h3>
-                <p className="text-zinc-400 leading-relaxed">
-                  {benefit.description}
-                </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {[
+            {
+              icon: "👛",
+              title: "DexPal Treasury",
+              description:
+                "A portion of prize pool contributions will be used to buy and stake your DEX's tokens or provide liquidity directly on your DEX",
+            },
+            {
+              icon: "💬",
+              title: "Actionable Feedback",
+              description:
+                "Receive direct user insights to inform and accelerate product improvements",
+            },
+            {
+              icon: "🤖",
+              title: "AI-Powered Onboarding",
+              description:
+                "Guided tools and tutorials that help users start trading quickly and confidently",
+            },
+            {
+              icon: "📈",
+              title: "Pro-User Analytics",
+              description:
+                "Advanced insights and performance tracking tailored for your users",
+            },
+          ].map((benefit, index) => (
+            <div
+              key={index}
+              className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 max-md:p-4 hover:border-purple-500/30 transition-all duration-300 group"
+            >
+              <div className="flex items-start space-x-4">
+                <div className="text-3xl mb-2">{benefit.icon}</div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-purple-400 transition-colors">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-zinc-400 leading-relaxed">
+                    {benefit.description}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
+
+      <NextButton currentTab={activeTab} />
     </div>
   );
 
@@ -518,6 +567,8 @@ const DexPalPartnershipDashboard = () => {
           </div>
         </div>
       </div>
+
+      <NextButton currentTab={activeTab} />
     </div>
   );
 
@@ -705,6 +756,8 @@ const DexPalPartnershipDashboard = () => {
           </div>
         </div>
       </div>
+
+      <NextButton currentTab={activeTab} />
     </div>
   );
 
@@ -1252,6 +1305,8 @@ Content-Type: application/json
           </div>
         </div>
       </div>
+
+      <NextButton currentTab={activeTab} />
     </div>
   );
 
@@ -1304,12 +1359,12 @@ Content-Type: application/json
               key={index}
               className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-8 max-md:p-4 hover:border-zinc-600/50 transition-all duration-300"
             >
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-4">
-                <h3 className="text-2xl font-bold text-white mb-2 lg:mb-0">
+              <div className="flex flex-row items-center justify-between mb-4">
+                <h3 className="text-2xl max-md:text-xl font-bold text-white lg:mb-0">
                   {item.phase}
                 </h3>
                 <span
-                  className={`text-${item.color}-400 font-bold text-lg bg-${item.color}-500/20 px-4 py-2 rounded-full border ${item.borderColor} w-fit`}
+                  className={`text-${item.color}-400 font-bold text-lg max-md:text-sm bg-${item.color}-500/20 max-md:px-3 px-4 max-md:py-1 py-2 rounded-full border ${item.borderColor} w-fit`}
                 >
                   {item.time}
                 </span>
@@ -1340,6 +1395,8 @@ Content-Type: application/json
           </div>
         </div>
       </div>
+
+      <NextButton currentTab={activeTab} />
     </div>
   );
 
@@ -1476,9 +1533,8 @@ Content-Type: application/json
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950">
-      {/* Header inspired by the design */}
-      <header className="bg-gradient-to-r from-purple-800 to-purple-900 shadow-lg shadow-purple-700/20">
+    <div className="lg:min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950">
+      <header className="max-lg:sticky max-lg:top-0 max-lg:z-50 bg-gradient-to-r from-purple-800 to-purple-900 shadow-lg shadow-purple-700/20 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <img
@@ -1561,7 +1617,7 @@ Content-Type: application/json
       )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-8 py-8">
-        <DocumentationBanner />
+        {activeTab === "overview" && <DocumentationBanner />}
 
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar inspired by the navigation structure - Hidden on mobile */}
