@@ -1400,7 +1400,7 @@ Content-Type: application/json
     </div>
   );
 
-  // TODO: Actually wire up form to send email to info@dexpal.io / hamed@dexpal.io
+  // TODO: Actually wire up form to send email to info@dexpal.io
   const renderContact = () => (
     <div className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-8 max-md:p-4">
       <h2 className="text-2xl font-bold text-white mb-6">Contact & Apply</h2>
@@ -1419,7 +1419,7 @@ Content-Type: application/json
                   Business Development
                 </div>
                 <div className="text-purple-400 text-sm font-mono">
-                  hamed@dexpal.io
+                  info@dexpal.io
                 </div>
               </div>
             </div>
@@ -1432,7 +1432,7 @@ Content-Type: application/json
                   Technical Integration
                 </div>
                 <div className="text-purple-400 text-sm font-mono">
-                  hamed@dexpal.io
+                  info@dexpal.io
                 </div>
               </div>
             </div>
@@ -1441,7 +1441,7 @@ Content-Type: application/json
           <div className="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-6 max-md:p-4">
             <h4 className="font-semibold text-white mb-3">Next Steps</h4>
             <ol className="space-y-2 text-zinc-300 text-sm">
-              <li>1. Email hamed@dexpal.io</li>
+              <li>1. Email info@dexpal.io</li>
               <li>2. Schedule intro call</li>
               <li>3. Review technical requirements</li>
               <li>4. Sign partnership agreement</li>
